@@ -32,6 +32,9 @@
 ## Screen Shots of the Application:
 ![Code Quiz screenShots](Project-Layout-pic-1.png)
 ![Code Quiz screenShots](Project-Layout-pic-2.png)
+![Code Quiz screenShots](Project-Layout-pic-4.png)
+![Code Quiz screenShots](Project-Layout-pic-5.png)
+![Code Quiz screenShots](Project-Layout-pic-6.png)
 
 <br>
 <br>
