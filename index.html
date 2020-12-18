@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>iSeePets</title>
 </head>
 <body>
+
+<script>
+
+var apiKey= "i4WSkGk27C4yI7wCconCIHNXNrZh2dLsepStJSgNB7p9137P05";
+var url = "https://api.petfinder.com/v2/animals";
+
+$.get({
+//   url: "https://api.petfinder.com/v2/animals",
+  url: "https://cors-anywhere.herokuapp.com/",
+  method: "Get",
+  headers: {
+      Authorization:" ",
+  }
+}).then((res) => {
+  console.log(res);
+});
+
+</script>
+
+
+
+
+
+
+
     <h1>iSeePets</h1>
     <ul>Group Project -1, due January 5th, 2021
         <hr>
