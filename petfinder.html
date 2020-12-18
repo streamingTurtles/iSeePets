@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var apiKey = "i4WSkGk27C4yI7wCconCIHNXNrZh2dLsepStJSgNB7p9137P05";
+      var url = "https://api.petfinder.com/v2/animals";
+
+      $.get({
+        url:
+          "https://cors-anywhere.herokuapp.com/https://api.petfinder.com/v2/animals",
+        method: "GET",
+        headers: {
+          Authorization:
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJpNFdTa0drMjdDNHlJN3dDY29uQ0lITlhOclpoMmRMc2VwU3RKU2dOQjdwOTEzN1AwNSIsImp0aSI6ImYzMGE4OTI0ZGEzYWFiN2MxODczYTAxYTA4NDk5MGEyZWVmOGU0NzE4ZTU4NjQ1YjUwNDk4MTU2OTdhOTI0YWIxNzExNWYxMTk4YjViMzFhIiwiaWF0IjoxNjA4MjU4NTY4LCJuYmYiOjE2MDgyNTg1NjgsImV4cCI6MTYwODI2MjE2OCwic3ViIjoiIiwic2NvcGVzIjpbXX0.nseJfsv8doHF2kVffLSGAB5eb4kKMcpJgPW_H1lOjoYxTHx9EtKAXw---i_bvazUpsSH0OsXQ4e3SBQfn07TL5TTjmzxZ-zJpsge6LJWo0rqNQHFeWS3I193psuV9ZOgHD_IDuLuJu1tqknp59YqyLX1p6twN6BJ1aFWISgyFSuXgnMquz-LI6RFFMY6Jz3GKsHdXkybBUPv-QGeTeVeEH40_kYcwYJCYB0o5kGVVf9h0uz16lcjTbl7jpRpNA0yxTZp41LipfZIliT1Sbzwh7itL4rMRWIfrDFoUz4ZXDUeavd3uy5U7blms8Ti5YKWRkG4Ydm9lR226nHcDl36SQ",
+        },
+      }).then((res) => {
+        console.log(res);
+      });
+    </script>
+  </body>
+</html>
