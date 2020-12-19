@@ -10,7 +10,20 @@
     <h1 class="breed"></h1>
 
     <script>
-      var apiKey = "i4WSkGk27C4yI7wCconCIHNXNrZh2dLsepStJSgNB7p9137P05";
+      //.post to get generated api token
+      function getapiKey() {
+        $.post(
+          "https://api.petfinder.com/v2/oauth2/token",
+          "grant_type=client_credentials&client_id=i4WSkGk27C4yI7wCconCIHNXNrZh2dLsepStJSgNB7p9137P05&client_secret=Dav2xXd8H9Y7PTvQvBymZPdYAP3KYXYTLWMu5Eca",
+          function (response) {
+            console.log(response);
+            console.log(response.access_token);
+            return response.access_token;
+          }
+        );
+      }
+
+      var apiKey = getapiKey();
       var url = "https://api.petfinder.com/v2/animals";
 
       $.get({
