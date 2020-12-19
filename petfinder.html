@@ -7,6 +7,8 @@
     <title>Document</title>
   </head>
   <body>
+    <h1 class="breed"></h1>
+
     <script>
       var apiKey = "i4WSkGk27C4yI7wCconCIHNXNrZh2dLsepStJSgNB7p9137P05";
       var url = "https://api.petfinder.com/v2/animals";
@@ -21,6 +23,7 @@
         },
       }).then((res) => {
         console.log(res);
+        $(".breed").text(" Breed:" + res.animals[0].breeds.primary);
       });
     </script>
   </body>
