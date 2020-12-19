@@ -1,4 +1,8 @@
-function openCity(evt, tabname) {
+defultIsDog()
+function defultIsDog(){
+  document.getElementById("dogs").style.display = "block";
+}
+function changetabs(evt, tabname) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
