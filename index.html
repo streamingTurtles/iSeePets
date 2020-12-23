@@ -1,31 +1,165 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iSeePets</title>
-</head>
-<body>
-    <h1>iSeePets</h1>
-    <ul>Group Project -1, due January 5th, 2021
-        <hr>
-        <li>Natalia Carvajal</li>
-        <li>Mariah Rivera</li>
-        <li>Luwenxi Song</li>
-        <li>Rajahni Fields</li>
-        <li>Peter Cardillo</li>
-    </ul>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  </head>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" >
+          <h1 class="title">
+            iSeePets
+          </h1>
+          <br>
+          <p class="subtitle">
+            Find your <strong>Perfect Pets</strong>!
+          </p>
+          </a>
+    
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item">
+            Home
+          </a>
+    
+          <a class="navbar-item">
+            Pet Articles
+          </a>
 
-    <img src="Project-Layout-pic-4.png" alt="">
-    <img src="Project-Layout-pic-5.png" alt="">
-    <img src="Project-Layout-pic-6.png" alt="">
+          <a class="navbar-item">
+            Contact
+          </a>
+    
+          </div>
+        </div>
+    
+        <div class="navbar-end">
+          <div class="navbar-item">
+           
+          </div>
+        </div>
+      </div>
+    </nav>
+  
+  
+  <section class="section">
+    
+  
 
-    <ul>
-        <h3>API Research:</h3>
-        <li><a href="https://userguide.rescuegroups.org/display/APIDG/API+Developers+Guide+Home?ref=apilist.fun"></a>Introduction to the RescueGroups.org APIs</li>
-        <li><a href="https://cloud.google.com/maps-platform/maps?utm_source=google&utm_medium=cpc&utm_campaign=FY20-Q3-global-demandgen-displayonnetworkhouseads-cs-GMP_maps_contactsal_saf_v2&utm_content=text-ad-none-none-DEV_c-CRE_460848633508-ADGP_Hybrid | AW SEM | BKWS ~ Google Maps API-KWID_43700033921822021-aud-599437144768%3Akwd-335425467-userloc_9004518&utm_term=KW_google maps api-ST_google maps api&gclid=Cj0KCQiA8dH-BRD_ARIsAC24umZhJAJInqlFpqCgnHx4efzJ-u_gM5_VRvDZJCJYkcwm2_cyK3sQN28aAiqQEALw_wcB"></a>Google Maps</li>
-    </ul>
-    <br>
-    <hr>
-</body>
+    <div class="tab">
+      <button class="tablinks" onclick="changetabs(event, 'dogs')">Dogs</button>
+      <button class="tablinks" onclick="changetabs(event, 'cats')">Cats</button>
+      <button class="tablinks" onclick="changetabs(event, 'other')">Other</button>
+    </div>
+    
+    <div id="dogs" class="tabcontent">
+      <h3>Dogs</h3>
+      <form action="/action_page.php">
+        <label for="dgage">Age:</label>
+        <select name="dgage" id="dgage">
+          <option value="puppy">puppy</option>
+          <option value="young">young</option>
+          <option value="adult">adult</option>
+          <option value="senior">senior</option>
+        </select>
+        <label for="dogbreed">breed:</label>
+        <select name="dogbreed" id="dogbreed">
+        </select>
+        <label for="size">Size:</label>
+        <select name="size" id="size">
+          <option value="small">small</option>
+          <option value="medium">medium</option>
+          <option value="large">large</option>
+          <option value="xlarge">x-large</option>
+        </select>
+        <label for="gender">gender:</label>
+        <select name="gender" id="gender">
+          <option value="Male">male</option>
+          <option value="Female">female</option>
+        </select>
+        <label for="specialneeds">Special Needs</label>
+        <input type="checkbox" id="specialneeds" name="specialneeds" value="specialneeds">
+        <br><br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+    <div id="cats" class="tabcontent">
+      <h3>Cats</h3>
+      <form action="/action_page.php">
+        <label for="ctage">Age:</label>
+        <select name="ctage" id="ctage">
+          <option value="kitten">kitten</option>
+          <option value="young">young</option>
+          <option value="adult">adult</option>
+          <option value="senior">senior</option>
+        </select>
+        <label for="catbreed">breed:</label>
+        <select name="catbreed" id="catbreed">
+        </select>
+        <label for="size">Size:</label>
+        <select name="size" id="size">
+          <option value="small">small</option>
+          <option value="medium">medium</option>
+          <option value="large">large</option>
+          <option value="xlarge">x-large</option>
+        </select>
+        <label for="gender">gender:</label>
+        <select name="gender" id="gender">
+          <option value="Male">male</option>
+          <option value="Female">female</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+    
+    <div id="other" class="tabcontent">
+      <h3>other</h3>
+      <form action="/action_page.php">
+        <label for="otrtype">type:</label>
+        <select name="otrtype" id="otrtype">
+        </select> 
+        <label for="gender">gender:</label>
+        <select name="gender" id="gender">
+          <option value="Male">male</option>
+          <option value="Female">female</option>
+        </select>
+        <label for="size">size:</label>
+        <select name="size" id="size">
+          <option value="small">small</option>
+          <option value="medium">medium</option>
+          <option value="large">large</option>
+          <option value="xlarge">x-large</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+    
+    <iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=API_KEY
+    &q=Space+Needle,Seattle+WA" allowfullscreen>
+    </iframe>
+    
+    
+</div>
+</section>
+
+  </body>
+  <script src="./script.js"></script>
 </html>
