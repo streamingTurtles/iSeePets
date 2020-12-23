@@ -33,8 +33,7 @@
     border: 1px solid #ccc;
     border-top: none;
   }
-  /* navbar{
-  float: left;
-  background-color: rgb(130, 15, 224);
-  text-emphasis-color: black;  
- } */
+card{
+size: 20rem;
+
+}
