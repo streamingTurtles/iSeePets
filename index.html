@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hello Bulma!</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
   </head>
   <body>
@@ -12,21 +12,37 @@
       <div class="navbar-brand">
         <a class="navbar-item" >
           <h1 class="title">
-            iSeePets
-          </h1>
-          <br>
-          <p class="subtitle">
+            iSeePets<p class="subtitle">
             Find your <strong>Perfect Pets</strong>!
           </p>
-          </a>
-    
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          </h1>
+          <br>
+        </a>
+        <a role="button" class="navbar-burger" style="visibility: hidden;">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
+        <div class="dropdown is-hoverable">
+          <div class="dropdown-trigger">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+            <div class="dropdown-content">
+              <div class="dropdown-item">
+                <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
       </div>
-    
+       
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
           <a class="navbar-item">
@@ -159,27 +175,6 @@
     
 </div>
 </section>
-
-
-<script>
-
-    var apiKey= "i4WSkGk27C4yI7wCconCIHNXNrZh2dLsepStJSgNB7p9137P05";
-    var url = "https://api.petfinder.com/v2/animals";
-    
-    $.get({
-    //   url: "https://api.petfinder.com/v2/animals",
-      url: "https://cors-anywhere.herokuapp.com/",
-      method: "Get",
-      headers: {
-          Authorization:" ",
-      }
-    }).then((res) => {
-      console.log(res);
-    });
-    
-    </script>
-
-
   </body>
-  <script src="./script.js"></script>
+  <script src="./frontend.js"></script>
 </html>
