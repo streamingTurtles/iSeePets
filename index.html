@@ -160,6 +160,26 @@
 </div>
 </section>
 
+
+<script>
+
+    var apiKey= "i4WSkGk27C4yI7wCconCIHNXNrZh2dLsepStJSgNB7p9137P05";
+    var url = "https://api.petfinder.com/v2/animals";
+    
+    $.get({
+    //   url: "https://api.petfinder.com/v2/animals",
+      url: "https://cors-anywhere.herokuapp.com/",
+      method: "Get",
+      headers: {
+          Authorization:" ",
+      }
+    }).then((res) => {
+      console.log(res);
+    });
+    
+    </script>
+
+
   </body>
   <script src="./script.js"></script>
 </html>
