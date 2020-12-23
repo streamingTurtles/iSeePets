@@ -1,0 +1,32 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+
+// Set your brand colors
+$blue: #47B7BD;
+$beige: #fce8da;
+$yellow: #e5a043;
+$orange: #a54811;
+$brown: #401719;
+$lightblue:#9ed9dc;
+
+$family-sans-serif: "Nunito", sans-serif;
+$navbar-item-color:$brown;
+$navbar-background-color:$blue;
+$navbar-item-hover-color:$orange;
+$title-color:$brown;
+$title-size:50px;
+$subtitle-color:$orange;
+$subtitle-weight:bold;
+
+
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+@import "../node_modules/bulma/sass/elements/button.sass";
+@import "../node_modules/bulma/sass/elements/container.sass";
+@import "../node_modules/bulma/sass/elements/title.sass";
+@import "../node_modules/bulma/sass/form/_all.sass";
+@import "../node_modules/bulma/sass/components/navbar.sass";
+@import "../node_modules/bulma/sass/layout/hero.sass";
+@import "../node_modules/bulma/sass/layout/section.sass";
+@import "../node_modules/bulma/sass/components/dropdown.sass";

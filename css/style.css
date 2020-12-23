@@ -1,21 +1,18 @@
 body{
-  background-color: #e7cdbe;
-}
-.title{
-  color:#fffdf8 
-}
-
-.subtitle{
-  color:#ffda15 
+  background-image: url('../Assets/background.jpg') ;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
 }
 
-.tab { 
+
+  .tab { 
     border: 1px solid #b85a1c;
-    background-color: #199da4;
+    background-color: #47B7BD;
     overflow: hidden;
     border-radius: 25px 25px 0px 0px;
     font-weight: bold;
-  }
+   }
   
   .tab button {
     background-color: inherit;
@@ -26,11 +23,13 @@ body{
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 17px;
+    font-weight: bold;
+    color: white;
   }
 
   .tab button:hover {
     background-color: #a54811;
-    color: #fffdf8;
+    color: #47B7BD;
   }
   
   .tab button.active {
@@ -55,4 +54,4 @@ body{
    margin-bottom: 3%; 
  }
   
-
+  
