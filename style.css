@@ -33,7 +33,7 @@
     border: 1px solid #ccc;
     border-top: none;
   }
-card{
+container{
 size: 20rem;
-
+float: left;
 }
