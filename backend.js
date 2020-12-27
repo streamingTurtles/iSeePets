@@ -28,4 +28,6 @@
         $(".breed").text(" Breed:" + res.animals[0].breeds.primary);
       });
 
-
+    function searchPets(){
+      window.location.href = "selection.html"
+    }
