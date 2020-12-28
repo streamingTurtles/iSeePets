@@ -2,7 +2,7 @@ body{
   background-image: url('../Assets/background.jpg') ;
   background-position: center; 
   background-repeat: no-repeat; 
-  background-size: cover; 
+  background-size: cover;  
 }
 
 
@@ -54,4 +54,24 @@ body{
    margin-bottom: 3%; 
  }
   
+ .subBtn {
+  background-color: #47B7BD;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border: solid;
+  border-color:#a54811 ;
+  border-width: 1.8px;
+  border-radius:6px 
+ }
   
+ .subBtn:hover{
+  background-color: #a54811;
+  color: #47B7BD;
+  font-weight: bold;
+  font-size: 18px;
+  border: solid;
+  border-color:#a54811 ;
+  border-width: 1.8px;
+  border-radius:6px 
+ }

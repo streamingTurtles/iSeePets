@@ -1,6 +1,7 @@
-defultIsDog()
-function defultIsDog(){
+defaultIsDog()
+function defaultIsDog(){
   document.getElementById("dogs").style.display = "block";
+  
 }
 function changetabs(evt, tabname) {
   var i, tabcontent, tablinks;
@@ -31,4 +32,5 @@ $.get({
 }).then((res) => {
   console.log(res);
 });
+
 
