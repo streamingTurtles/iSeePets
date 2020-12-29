@@ -1,3 +1,4 @@
+
 // ****************************************************************************** //
 // from petfinder.com/user/developer-settings  -  API key & Secrete
 var key="i4WSkGk27C4yI7wCconCIHNXNrZh2dLsepStJSgNB7p9137P05";
@@ -117,3 +118,4 @@ function searchPets() {
     apiCallForAnimals(animalType, zip, breed);
   });  
 }
+
