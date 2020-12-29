@@ -71,8 +71,26 @@ function apiCallForAnimals(animalType, zip, breed) {
 
 function getMeSomeAnimals(responseJson) {
   console.log(responseJson);
+  // show the searched animals - to populate in selection.html page
+  $("#results ul").html("");
+  for (let i = 0; i < responseJson.animals.length; i++) {
+    $("#results ul").append(`<li>
+     <h3>${responseJson.animals[i].name}</h3>
+     <img src="${responseJson.animals[i].photos[0].medium}" alt="animals" class="petImg">
+     <p>${responseJson.animals[i].breeds.primary}<p>
+     <p>${responseJson.animals[i].age} ${responseJson.animals[i].gender}<p>
+     <a href="${responseJson.animals[i].url}" class="animalLink" target="_blank">See me on Petfinder!</a>
+     
+     </li>`);
+  }  
 }
 // ****************************************************************************** //
+
+
+
+
+
+
 
 
 
