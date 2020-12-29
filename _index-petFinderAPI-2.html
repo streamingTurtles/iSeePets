@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 class="breed"></h1>
+
+    <script>
+      //.post to get generated api token
+      function getapiKey() {
+        $.post(  // why is it in this order - in the documentation - its the other way around???
+          "https://api.petfinder.com/v2/oauth2/token",
+          "grant_type=client_credentials&client_id=i4WSkGk27C4yI7wCconCIHNXNrZh2dLsepStJSgNB7p9137P05&client_secret=Dav2xXd8H9Y7PTvQvBymZPdYAP3KYXYTLWMu5Eca",
+          // "https://api.petfinder.com/v2/oauth2/token",  // this is out of order, but why??
+          function (response) {
+            console.log(response);
+            console.log(response.access_token);
+            return response.access_token;
+          }
+        );
+      }
+
+      var apiKey = getapiKey();
+      // var url = "https://api.petfinder.com/v2/animals";
+      // var url = "https://api.petfinder.com/v2/animals?type=dog&page=2"
+
+      $.get({
+        // url: "https://cors-anywhere.herokuapp.com/https://api.petfinder.com/v2/animals",
+        // url: "https://cors-anywhere.herokuapp.com/" + url,
+        url: 'https://api.petfinder.com/v2/animals?type=dog&page=2',
+        method: "GET",
+        headers: {
+          Authorization:
+            // "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJpNFdTa0drMjdDNHlJN3dDY29uQ0lITlhOclpoMmRMc2VwU3RKU2dOQjdwOTEzN1AwNSIsImp0aSI6IjIyZDViMTQ3M2JjYTdkNzk0NDQwNGE2ODVlMDY1MGEwMTdhMzk2YjRiNGZlNDRhNWExNTM5ODE4ODEwNmJjOTEwYWM5YmNlOTdhYmJkZjFmIiwiaWF0IjoxNjA4NDAyMzgyLCJuYmYiOjE2MDg0MDIzODIsImV4cCI6MTYwODQwNTk4Miwic3ViIjoiIiwic2NvcGVzIjpbXX0.idXHWoYk_-Bqi1f7TyTfQtIYFurFzxqn_On_UY9bA28oSQ9vyeY-9CayTddGIfMATxLHDoC4lZGlFCN5Rqhcz0ADQWPW3XuVi7aBRXQ1zoR78tbp9hWPIrfSseqf02LLiZW9Y5pk1R-0Kz6YXPe36T6vFbf6KKPw6Thamb9exYb9P8VUy3JaFgqJhlhKmDRAz6VOo8ilXmMVb7ymh1DcuSpWA_nvlMaDSi_s_jYS-Lw9PhUDP2_I05u8H411Axai6iNAxhshCxJcNoM1j8VBLEDe5C7cCeCzfADGk5-AIsmMfsAIboMNoDFZItkUotnTITh6d35YgAqdk30jtjYwpg",
+            // "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJpNFdTa0drMjdDNHlJN3dDY29uQ0lITlhOclpoMmRMc2VwU3RKU2dOQjdwOTEzN1AwNSIsImp0aSI6IjIyZDViMTQ3M2JjYTdkNzk0NDQwNGE2ODVlMDY1MGEwMTdhMzk2YjRiNGZlNDRhNWExNTM5ODE4ODEwNmJjOTEwYWM5YmNlOTdhYmJkZjFmIiwiaWF0IjoxNjA4NDAyMzgyLCJuYmYiOjE2MDg0MDIzODIsImV4cCI6MTYwODQwNTk4Miwic3ViIjoiIiwic2NvcGVzIjpbXX0.Ndy68tN-0IqxSz-9NEoNxmqj1RK__09ji-UrtfFhEaWUeE4ttauhKmPNNLST1OqkhP4PkV-_fI-79N9cSoH-xPTgR1S1xUFjsxKx_JWf2-6_mi6LjooaWq-UUmtyHid41CH7uobCCHAj4IdL4esCai-4d9IyXBPy5Zyb_Yak9jjyfycCyiP_vp8Kdl6zqSwttMe1I0sWVZE4vPXvOc3Zoog2K1X2xbY-4rVcMP76NIceLmAuAsylgmPzLhAE1g3rf78e4ygfdLoxVBPsAT6nKOXpg73qgPRmdXAN6MWCT20QbkWRswPmmZs_iBNG6dDtGVXp4_s0tPgxgalWO9hkjA",
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJpNFdTa0drMjdDNHlJN3dDY29uQ0lITlhOclpoMmRMc2VwU3RKU2dOQjdwOTEzN1AwNSIsImp0aSI6IjIyZDViMTQ3M2JjYTdkNzk0NDQwNGE2ODVlMDY1MGEwMTdhMzk2YjRiNGZlNDRhNWExNTM5ODE4ODEwNmJjOTEwYWM5YmNlOTdhYmJkZjFmIiwiaWF0IjoxNjA4NDAyMzgyLCJuYmYiOjE2MDg0MDIzODIsImV4cCI6MTYwODQwNTk4Miwic3ViIjoiIiwic2NvcGVzIjpbXX0.Ph9XSovwzuwDZX8yHZXF6RMVJtz-NHjr25aTGdfKu_J-NzG8YRFORyObmk3qicU0hHo7dX0toqwjR377R6JEBLXfAPpGdM-W7PclDfTe0ZOkgVANUsxkhG2Zpt1Jt3NJPAaWWl9c6ubN5trSAbnFlyghnMgGyND9W_mklS6Tl4pkxcCn7rUeEFh11Xm1843KccmTV_pFqA1HahbiTpzLoZpg1YJryvyr5EDsXVY-PeYPTMwmxcHoUyqk1sI6xz4mHEEiIFjnSUDZeWc1Xi9gQ7Vx71bgIae2px3XsvzWLHPEPQJkSkGWswaWuVnBML-Mot4wy9bI9X0qDhuNBfrNXw",
+        },
+      }).then((res) => {
+        console.log(res);
+        $(".breed").text(" Breed:" + res.animals[0].breeds.primary);
+      });
+
+
+
+
+      // use API to popluate a dropdown menu in form
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
