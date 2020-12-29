@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>iSeePets</title>
+</head>
+<body>
+
+<script>
+
+var apiKey= "i4WSkGk27C4yI7wCconCIHNXNrZh2dLsepStJSgNB7p9137P05";
+var url = "https://api.petfinder.com/v2/animals";
+
+$.get({
+//   url: "https://api.petfinder.com/v2/animals",
+  url: "https://cors-anywhere.herokuapp.com/",
+  method: "Get",
+  headers: {
+      Authorization:" ",
+  }
+}).then((res) => {
+  console.log(res);
+});
+
+</script>
+
+
+
+
+
+
+
+    <h1>iSeePets</h1>
+    <ul>Group Project -1, due January 5th, 2021
+        <hr>
+        <li>Natalia Carvajal</li>
+        <li>Mariah Rivera</li>
+        <li>Luwenxi Song</li>
+        <li>Rajahni Fields</li>
+        <li>Peter Cardillo</li>
+    </ul>
+
+    <img src="Project-Layout-pic-4.png" alt="">
+    <img src="Project-Layout-pic-5.png" alt="">
+    <img src="Project-Layout-pic-6.png" alt="">
+
+    <ul>
+        <h3>API Research:</h3>
+        <li><a href="https://userguide.rescuegroups.org/display/APIDG/API+Developers+Guide+Home?ref=apilist.fun"></a>Introduction to the RescueGroups.org APIs</li>
+        <li><a href="https://cloud.google.com/maps-platform/maps?utm_source=google&utm_medium=cpc&utm_campaign=FY20-Q3-global-demandgen-displayonnetworkhouseads-cs-GMP_maps_contactsal_saf_v2&utm_content=text-ad-none-none-DEV_c-CRE_460848633508-ADGP_Hybrid | AW SEM | BKWS ~ Google Maps API-KWID_43700033921822021-aud-599437144768%3Akwd-335425467-userloc_9004518&utm_term=KW_google maps api-ST_google maps api&gclid=Cj0KCQiA8dH-BRD_ARIsAC24umZhJAJInqlFpqCgnHx4efzJ-u_gM5_VRvDZJCJYkcwm2_cyK3sQN28aAiqQEALw_wcB"></a>Google Maps</li>
+    </ul>
+    <br>
+    <hr>
+</body>
+</html>
