@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Google Map</title>
+    <!-- adding in map API -->
+    <!-- // API Key: AIzaSyCeydvT2KATQXldXHRWll-W2Q9V0psbmE8 -->
+    <script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9V0psbmE8&callback=initMap">
+    </script>
+    <!-- internal CSS style for our map -->
+    <style>
+        #map{
+            height: 400px;
+            width: 100%
+        }
+    </style>
+
+
+</head>
+
+
+
+
+
+
+<body>
+    <hr>
+    <h1>Adding a google map</h1>
+    <div id="map">Here is the google map</div>
+
+
+
+
+
+
+    <script>
+        // Initialize and add the map       
+        function initMap(){
+            const uluru = {lat: -25.344, lng: 131.036};
+            // The map, centered at Uluru
+            const map = new google.maps.Map(document.getElementById("map"),
+            {
+                zoom: 4,
+                center: uluru,
+            });
+            // The marker, positioned at Ulura
+            const marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+            });
+        }
+    </script>
+
+
+ 
+
+</body>
+</html>

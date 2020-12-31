@@ -8,6 +8,7 @@ var secret="Dav2xXd8H9Y7PTvQvBymZPdYAP3KYXYTLWMu5Eca";
 // from https://www.petfinder.com/developers/v2/docs/ 
 // from documentation : use deconstructed curl to browser fetch to get a new token for each API request 
 // curl -d "grant_type=client_credentials&client_id={CLIENT-ID}&client_secret={CLIENT-SECRET}" https://api.petfinder.com/v2/oauth2/token  
+
 //frontend
 tablinks = document.getElementsByClassName("tablinks")
 tabcontent = document.getElementsByClassName("tabcontent");
@@ -33,6 +34,7 @@ function changetabs(evt, tabname) {
   petType = evt.currentTarget.value
   console.log(petType)
 }
+
 
 
 var token=""
@@ -66,11 +68,13 @@ getNewToken();
 
 // ****************************************************************************** //
 // retrieves access token & makes API call to get animals
+
 function apiCallForAnimals(type, zip, breed) {
   
   console.log("GET ME SOME ANIMALS - API CALL MADE");
   fetch(
     `https://api.petfinder.com/v2/animals?type=${type}&breed=${breed}&special_needs=true&location=${zip}&status=adoptable&distance=25&limit=100`,
+
     {
       headers: {
         // FROM THE DOCUMENTATION
@@ -98,6 +102,7 @@ function apiCallForAnimals(type, zip, breed) {
 
 function getMeSomeAnimals(responseJson) {
   console.log(responseJson);
+
   $("#results").html('')
   // show the searched animals - to populate in selection.html page
   for (let i = 0; i < responseJson.animals.length; i++) {
@@ -108,6 +113,7 @@ function getMeSomeAnimals(responseJson) {
      <p>${responseJson.animals[i].age} ${responseJson.animals[i].gender}<p>
      <a href="${responseJson.animals[i].url}" class="animalLink" target="_blank">See me on Petfinder!</a>
      </div>`);
+
   }  
 }
 // ****************************************************************************** //
@@ -134,6 +140,7 @@ function searchPets() {
     event.preventDefault();  // do not submit to server, input used for building API call
     console.log("******** FORM SUBMITTED - HERE ARE YOUR SELETIONS TO BUILD API QUERY *********")
     // var animalType = $(".tablinks").val(); 
+
     var type = petType
     var zip = $("#zip").val();
     var breed = $("#dogbreed").val();
@@ -141,6 +148,7 @@ function searchPets() {
     console.log("the breed you selected is: ", breed);
     console.log("your zip code is: ", zip);
     apiCallForAnimals(type, zip, breed);
+
   });  
 }
 
