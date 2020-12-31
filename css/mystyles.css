@@ -4323,7 +4323,7 @@ body.has-spaced-navbar-fixed-bottom {
 
 .dropdown-menu {
   display: none;
-  left: 0;
+  right: 0;
   min-width: 12rem;
   padding-top: 4px;
   position: absolute;

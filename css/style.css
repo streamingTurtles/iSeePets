@@ -3,6 +3,8 @@ body{
   background-position: center; 
   background-repeat: no-repeat; 
   background-size: cover;  
+  width: 100%;
+  height: 100%;
 }
 
 
@@ -75,3 +77,36 @@ body{
   border-width: 1.8px;
   border-radius:6px 
  }
+
+ .column{
+   background-color: #ccc;
+   margin: 10px;
+ }
+ 
+ .resultImg{
+    background-color: white;
+    background-size:cover;
+    background-repeat:no-repeat;
+    height:235px;
+    padding: 15px;
+    
+ }
+ #result{
+  
+   margin-top:80px;
+ }
+ .icard{
+  display:inline-block;
+  width: 32%;
+  text-align: center;
+  background-color: white;
+  border-radius: 15px;
+  margin-left: 1%;
+  margin-top: 1%;
+  
+ }
+ .icard h3{
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #401719;
+  }
