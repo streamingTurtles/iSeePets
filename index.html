@@ -161,33 +161,67 @@
         <!-- <input class="subBtn" type="button" value="Search" onclick="searchPets()">  -->
         <input class="subBtn" type="submit" value="Search" onclick="searchPets()">
       </form>
-    </div>
-    <!-- Cats  -->
+    </div><!-- Cats  -->
     <div id="cats" class="tabcontent">
       <h3 class="category">Cats</h3>
       <form action="/action_page.php">
-        <label for="ctage">Age:</label>
-        <select name="ctage" id="ctage">
-          <option value="kitten">kitten</option>
-          <option value="young">young</option>
-          <option value="adult">adult</option>
-          <option value="senior">senior</option>
+        
+        <label for="catbreed">breed:</label>        
+        <!-- added in 47 breed options, we can add more  -->
+        <select name="catbreed" id="catbreed" class="form-control">
+            <option value="Abyssinian">Abyssinian</option>
+            <option value="American Bobtail">American Bobtail</option>
+            <option value="American Curl">American Curl</option>
+            <option value="American Shorthair">American Shorthair</option>
+            <option value="American Wirehair">American Wirehair</option>
+            <option value="Balinese">Balinese</option>
+            <option value="Bengal">Bengal</option>
+            <option value="Birman">Birman</option>
+            <option value="Bombay">Bombay</option>
+            <option value="British Shorthair">British Shorthair</option>
+            <option value="Burmese">Burmese</option>
+            <option value="Burmilla">Burmilla</option>
+            <option value="Chartreux">Chartreux</option>
+            <option value="Chausie">Chausie</option>
+            <option value="Carnish Rex">Carnish Rex</option>
+            <option value="Cymric">Cymric</option>
+            <option value="Devon Rex">Devon Rex</option>
+            <option value="Egyptian Mau">Egyptian Mau</option>
+            <option value="Havana">Havana</option>
+            <option value="Himalayan">Himalayan</option>
+            <option value="Japanese Bobtail">Japanese Bobtail</option>
+            <option value="Javanese">Javanese</option>
+            <option value="Korat">Korat</option>
+            <option value="LaPerm">LaPerm</option>
+            <option value="Maine Coon">Maine Coon</option>
+            <option value="Manx">Manx</option>
+            <option value="Munchkin">Munchkin</option>
+            <option value="Nebelung">Nebelung</option>
+            <option value="Norwegian Forest Cat">Norwegian Forest Cat</option>
+            <option value="Ocicat">Ocicat</option>
+            <option value="Oriental Short Hair">Oriental Short Hair</option>
+            <option value="Persian">Persian</option>
+            <option value="Pixiebob">Pixiebob</option>
+            <option value="Ragamuffin">Ragamuffin</option>
+            <option value="Raddoll">Raddoll</option>
+            <option value="Russian Blue">Russian Blue</option>
+            <option value="Scottish Fold">Scottish Fold</option>
+            <option value="Selkirk Rex">Selkirk Rex</option>
+            <option value="Siamese">Siamese</option>
+            <option value="Siberian">Siberian</option>
+            <option value="Singapura">Singapura</option>
+            <option value="Snowshoe">Snowshoe</option>
+            <option value="Somali">Somali</option>
+            <option value="Sphynx/Hairless Cat">Sphynx/Hairless Cat</option>
+            <option value="Tonkinese">Tonkinese</option>
+            <option value="Toyger">Toyger</option>
+            <option value="Turkish Angora">Turkish Angora</option>
+            <option value="Turkish Van">Turkish Van</option>
+            <option value="York Chocolate">York Chocolate</option>
         </select>
-        <label for="catbreed">breed:</label>
-        <select name="catbreed" id="catbreed">
         </select>
-        <label for="size">Size:</label>
-        <select name="size" id="size">
-          <option value="small">small</option>
-          <option value="medium">medium</option>
-          <option value="large">large</option>
-          <option value="xlarge">x-large</option>
-        </select>
-        <label for="gender">gender:</label>
-        <select name="gender" id="gender">
-          <option value="Male">male</option>
-          <option value="Female">female</option>
-        </select>
+        <label for="zip">Search by Zip Code:</label>
+        <input type="text" id="zip" class="form-control" required />
         <br><br>
         <!-- <input class="subBtn" type="button" value="Submit" onclick="searchPets()"> -->
         <input class="subBtn" type="submit" value="Search" onclick="searchPets()">
