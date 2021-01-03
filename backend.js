@@ -66,7 +66,7 @@ getNewToken();
 function apiCallForAnimals(type, zip, breed) {
   console.log("GET ME SOME ANIMALS - API CALL MADE");
   fetch(
-    `https://api.petfinder.com/v2/animals?type=${type}&breed=${breed}&special_needs=true&location=${zip}&status=adoptable&distance=25&limit=100`,
+    `https://api.petfinder.com/v2/animals?type=${type}&breed=${breed}&location=${zip}&status=adoptable&distance=25&limit=100`,
 
     {
       headers: {
@@ -87,7 +87,8 @@ function apiCallForAnimals(type, zip, breed) {
     //   console.log("here is an ANIMAL OBJECT: ", json);
     // });
     .then((response) => response.json())
-    .then((responseJson) => getMeSomeAnimals(responseJson));
+    .then((responseJson) => getMeSomeAnimals(responseJson))
+    .catch((err) => console.log(err));
 }
 
 function getMeSomeAnimals(responseJson) {
@@ -120,6 +121,25 @@ function searchPets() {
     var type = petType;
     var zip = $("#zip").val();
     var breed = $("#dogbreed").val();
+    console.log("you are looking for a: ", type);
+    console.log("the breed you selected is: ", breed);
+    console.log("your zip code is: ", zip);
+    apiCallForAnimals(type, zip, breed);
+  });
+}
+function searchPetsCat() {
+  console.log("API search Request Made - NOW go get me some ANIMALS !!!");
+  $("form").submit((event) => {
+    alert("Submitted"); // testing
+    event.preventDefault(); // do not submit to server, input used for building API call
+    console.log(
+      "******** FORM SUBMITTED - HERE ARE YOUR SELETIONS TO BUILD API QUERY *********"
+    );
+    // var animalType = $(".tablinks").val();
+
+    var type = petType;
+    var zip = $("#catzip").val();
+    var breed = $("#catbreed").val();
     console.log("you are looking for a: ", type);
     console.log("the breed you selected is: ", breed);
     console.log("your zip code is: ", zip);
