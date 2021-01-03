@@ -158,7 +158,7 @@ function throwError(errorMsg){
 function searchPets() {
   console.log("API search Request Made - NOW go get me some ANIMALS !!!");
   $("form").submit((event) => {
-    // alert("Submitted - from searchPets() function"); 
+    alert("Submitted"); // testing
     event.preventDefault(); // do not submit to server, input used for building API call
     console.log(
       "******** FORM SUBMITTED - HERE ARE YOUR SELETIONS TO BUILD API QUERY *********"
@@ -185,7 +185,7 @@ function searchPets() {
 function searchPetsCat() {
   console.log("API search Request Made - NOW go get me some ANIMALS !!!");
   $("form").submit((event) => {
-    // alert("Submitted - from seachPetsCat() function"); 
+    alert("Submitted"); // testing
     event.preventDefault(); // do not submit to server, input used for building API call
     console.log(
       "******** FORM SUBMITTED - HERE ARE YOUR SELETIONS TO BUILD API QUERY *********"
