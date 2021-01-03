@@ -75,12 +75,19 @@ var sNeeds;
   //       });
   //   });
 
-function apiCallForAnimals(type, zip, breed, sNeeds) {
-  console.log("sNeeds variable is: ", sNeeds);
+// <<<<<<< luwenxisong
+function apiCallForAnimals(type, zip, breed, sNeed) {
   console.log("GET ME SOME ANIMALS - API CALL MADE");
   fetch(
-    // value=“&special_needs=true”
-    `https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}&special_needs=${sNeeds}&status=adoptable&distance=25&limit=100`,
+    url=`https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}${sNeed}&status=adoptable&distance=25&limit=100`,
+// =======
+// function apiCallForAnimals(type, zip, breed, sNeeds) {
+//   console.log("sNeeds variable is: ", sNeeds);
+//   console.log("GET ME SOME ANIMALS - API CALL MADE");
+//   fetch(
+//     // value=“&special_needs=true”
+//     `https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}&special_needs=${sNeeds}&status=adoptable&distance=25&limit=100`,
+// >>>>>>> main
 
     // `https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}&status=adoptable&distance=25&limit=100`,
     {
@@ -104,6 +111,7 @@ function apiCallForAnimals(type, zip, breed, sNeeds) {
     .then((response) => response.json())
     .then((responseJson) => getMeSomeAnimals(responseJson))
     .catch((err) => console.log(err));
+    console.log(url)
 }
 
 function getMeSomeAnimals(responseJson) {
@@ -136,12 +144,18 @@ function searchPets() {
     var type = petType;
     var zip = $("#zip").val();
     var breed
+    var sNeed=''
+    if ($('.specialNeeds').is(":checked"))
+    {
+      sNeed = "&special_needs=true"
+    }
     if ($("#dogbreed").val() !== null){
      breed = "&breed="+$("#dogbreed").val();}else{breed=''}
     console.log("you are looking for a: ", type);
     console.log("the breed you selected is: ", breed);
     console.log("your zip code is: ", zip);
-    apiCallForAnimals(type, zip, breed);
+    console.log("Special needs", sNeed);
+    apiCallForAnimals(type, zip, breed, sNeed);
   });
 }
 function searchPetsCat() {
@@ -153,15 +167,20 @@ function searchPetsCat() {
       "******** FORM SUBMITTED - HERE ARE YOUR SELETIONS TO BUILD API QUERY *********"
     );
     // var animalType = $(".tablinks").val();
-
     var type = petType;
     var zip = $("#catzip").val();
     var breed
+    var sNeed=''
+    if ($('.specialNeeds').is(":checked"))
+    {
+      sNeed = "&special_needs=true"
+    }
     if ($("#catbreed").val() !== null){
      breed = "&breed="+$("#catbreed").val();}else{breed=''}
     console.log("you are looking for a: ", type);
     console.log("the breed you selected is: ", breed);
     console.log("your zip code is: ", zip);
-    apiCallForAnimals(type, zip, breed);
+    console.log("Special needs", sNeed);
+    apiCallForAnimals(type, zip, breed, sNeed);
   });
 }
