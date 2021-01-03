@@ -66,7 +66,7 @@ getNewToken();
 function apiCallForAnimals(type, zip, breed) {
   console.log("GET ME SOME ANIMALS - API CALL MADE");
   fetch(
-    `https://api.petfinder.com/v2/animals?type=${type}&breed=${breed}&location=${zip}&status=adoptable&distance=25&limit=100`,
+    `https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}&special_needs=true&status=adoptable&distance=25&limit=100`,
 
     {
       headers: {
