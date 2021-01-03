@@ -66,7 +66,7 @@ getNewToken();
 function apiCallForAnimals(type, zip, breed) {
   console.log("GET ME SOME ANIMALS - API CALL MADE");
   fetch(
-    `https://api.petfinder.com/v2/animals?type=${type}&breed=${breed}&location=${zip}&status=adoptable&distance=25&limit=100`,
+    `https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}&status=adoptable&distance=25&limit=100`,
 
     {
       headers: {
@@ -120,7 +120,9 @@ function searchPets() {
 
     var type = petType;
     var zip = $("#zip").val();
-    var breed = $("#dogbreed").val();
+    var breed
+    if ($("#catbreed").val() !== null){
+     breed = "&breed="+$("#catbreed").val();}else{breed=''}
     console.log("you are looking for a: ", type);
     console.log("the breed you selected is: ", breed);
     console.log("your zip code is: ", zip);
@@ -139,7 +141,9 @@ function searchPetsCat() {
 
     var type = petType;
     var zip = $("#catzip").val();
-    var breed = $("#catbreed").val();
+    var breed
+    if ($("#catbreed").val() !== null){
+     breed = "&breed="+$("#catbreed").val();}else{breed=''}
     console.log("you are looking for a: ", type);
     console.log("the breed you selected is: ", breed);
     console.log("your zip code is: ", zip);
