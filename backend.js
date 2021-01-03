@@ -62,12 +62,27 @@ getNewToken();
 
 // ****************************************************************************** //
 // retrieves access token & makes API call to get animals
+var sNeeds;
+	// $(document).ready(function(){
+  //       $(‘input[type=“checkbox”]’).click(function(){
+  //           if($(this).prop(“checked”) == true){
+  //              sNeeds = “&special_needs=true”;
+  //           }
+  //           else if($(this).prop(“checked”) == false){
+  //               $(“#result”).html(“Checkbox is unchecked.“);
+  //             sNeeds = “”
+  //           }
+  //       });
+  //   });
 
-function apiCallForAnimals(type, zip, breed) {
+function apiCallForAnimals(type, zip, breed, sNeeds) {
+  console.log("sNeeds variable is: ", sNeeds);
   console.log("GET ME SOME ANIMALS - API CALL MADE");
   fetch(
-    `https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}&status=adoptable&distance=25&limit=100`,
+    // value=“&special_needs=true”
+    `https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}&special_needs=${sNeeds}&status=adoptable&distance=25&limit=100`,
 
+    // `https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}&status=adoptable&distance=25&limit=100`,
     {
       headers: {
         // FROM THE DOCUMENTATION
