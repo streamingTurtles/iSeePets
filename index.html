@@ -114,7 +114,7 @@
         <label for="dogbreed">breed:</label>
         <!-- added in 20 breed options, we can add more  -->
         <select name="dogbreed" id="dogbreed" class="form-control">
-          <option></option>
+          <option value="&special_needs=true">SPECAL NEEDS PETS</option>
           <option value="shih tzu">shih tzu</option>
             <option value="labrador retriever">labrador retriever</option>
             <option value="golden retriever">golden retriever</option>
@@ -158,8 +158,20 @@
         <input type="text" id="zip" class="form-control" required />
         <!-- </select> -->
         <br><br>
+<!-- <<<<<<< luwenxisong -->
         <input type="checkbox" name="special" class="specialNeeds">
         <label for="special">Special needs pets only</label><br>
+
+<!--         <input type="checkbox" id="s_Needs" name="sNeeds" value = 'true'>
+        <label for="specialNeeds"> Click for Special Needs</label><br><br> -->
+
+
+
+
+
+
+
+
         <!-- <input class="subBtn" type="button" value="Submit" onclick="searchPets()"> -->
         <!-- <input class="subBtn" type="button" value="Search" onclick="searchPets()">  -->
         <input class="subBtn" type="submit" value="Search" onclick="searchPets()">
@@ -331,6 +343,22 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9
 <script src="./backend.js"></script>
 
 <!-- <script src="./frontend.js"></script>--> 
+
+
+<!-- <script>
+var sNeeds;
+$(document).ready(function(){
+        $(‘input[type=“checkbox”]’).click(function(){
+            if($(this).prop(“checked”) == true){
+               sNeeds = “&special_needs=true”;
+            }
+            else if($(this).prop(“checked”) == false){
+                $(“#result”).html(“Checkbox is unchecked.“);
+              sNeeds = “”
+            }
+        });
+    });
+</script> -->
 
 
 </body>  
