@@ -121,8 +121,8 @@ function searchPets() {
     var type = petType;
     var zip = $("#zip").val();
     var breed
-    if ($("#catbreed").val() !== null){
-     breed = "&breed="+$("#catbreed").val();}else{breed=''}
+    if ($("#dogbreed").val() !== null){
+     breed = "&breed="+$("#dogbreed").val();}else{breed=''}
     console.log("you are looking for a: ", type);
     console.log("the breed you selected is: ", breed);
     console.log("your zip code is: ", zip);
