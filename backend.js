@@ -19,6 +19,9 @@ function defaultIsDog() {
   console.log(petType);
 }
 function changetabs(evt, tabname) {
+  if (document.querySelector("#results").children.length) {
+    $("#results").html("");
+  }
   var i;
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
@@ -76,11 +79,13 @@ var sNeeds;
 //   });
 
 // <<<<<<< luwenxisong
-function apiCallForAnimals(type, zip, breed, sNeed) {
+function apiCallForAnimals(type, zip, breed, sNeed, longitude, latitude) {
   console.log("GET ME SOME ANIMALS - API CALL MADE");
   fetch(
     (url = `https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}${sNeed}&status=adoptable&distance=25&limit=100`),
-    // =======
+    // testing for location:
+    // url=`https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}&location=${longitude}&location=${latitude}${sNeed}&status=adoptable&distance=25&limit=100`,
+    // >>>>>>> 090134fef59b4164ae344183ad76715fcc1a572e
     // function apiCallForAnimals(type, zip, breed, sNeeds) {
     //   console.log("sNeeds variable is: ", sNeeds);
     //   console.log("GET ME SOME ANIMALS - API CALL MADE");
@@ -165,7 +170,8 @@ function searchPets() {
       "******** FORM SUBMITTED - HERE ARE YOUR SELETIONS TO BUILD API QUERY *********"
     );
     // var animalType = $(".tablinks").val();
-
+    var longitude = 0;
+    var latitude = 0;
     var type = petType;
     var zip = $("#zip").val();
     var breed;
@@ -182,7 +188,7 @@ function searchPets() {
     console.log("the breed you selected is: ", breed);
     console.log("your zip code is: ", zip);
     console.log("Special needs", sNeed);
-    apiCallForAnimals(type, zip, breed, sNeed);
+    apiCallForAnimals(type, zip, breed, sNeed, longitude, latitude);
   });
 }
 function searchPetsCat() {
@@ -213,30 +219,3 @@ function searchPetsCat() {
     apiCallForAnimals(type, zip, breed, sNeed);
   });
 }
-
-// TRYING TO EMPTY PAGE
-// $("tablinks active").onclick("click", function (event) {
-//   event.preventDefault();
-//   $(".resultImg").empty();
-// });
-// function clear() {
-//  $(".tabcontent").on("click", function (event) {
-//     event.preventDefault();
-//     $("#resultImg").empty();
-
-// $(document).ready(function(){
-//   $("button").click(function(){
-//     $("div").empty();
-
-// // CLICK HANDLERS
-// // ==========================================================
-
-// // .on("click") function associated with the Search Button
-// $("#run-search").on("click", function (event) {
-//   // This line allows us to take advantage of the HTML "submit" property
-//   // This way we can hit enter on the keyboard and it registers the search
-//   // (in addition to clicks). Prevents the page from reloading on form submit.
-
-//   // Empty the region associated with the articles
-//   clear();
-// }

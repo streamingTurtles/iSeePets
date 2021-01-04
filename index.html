@@ -64,8 +64,11 @@
           </a>
           </div>
         </div>
-    
+
+        <img src="Assets/cat_pic.png"  width="200" height="40" class="c-card__image" alt="Card Image" />
+
         <div class="navbar-end">
+
           <div class="navbar-item">
            
           </div>
@@ -108,27 +111,26 @@
         <label for="dogbreed">Breed:</label>
         <!-- added in 20 breed options, we can add more  -->
         <select name="dogbreed" id="dogbreed" class="form-control">
-            <option value="&special_needs=true">SPECAL NEEDS PETS</option>
-            <option value="Beagle">Beagle</option>
-            <option value="Bichon Frise">Bichon Frise</option>
-            <option value="Bloodhound">Bloodhound</option>        
-            <option value="Bull Terrier">Bull Terrier</option>
-            <option value="Chow Chow">Chow Chow</option>
-            <option value="Cocker Spaniel">Cocker Spaniel</option>
-            <option value="Collie">Collie</option>
-            <option value="Dalmatian">Dalmatian</option>
-            <option value="Golden Retriever">Golden Retriever</option>
-            <option value="Great Dane">Great Dane</option>
-            <option value="Great Pyrenees">Great Pyrenees</option>
-            <option value="Husky">Husky</option>
-            <option value="Jack Russell Terrier">Jack Russell Terrier</option>
-            <option value="Labrador Retriever">Labrador Retriever</option>
-            <option value="Mastiff">Mastiff</option>
-            <option value="Pug">Pug</option>
-            <option value="Rottweiler">Rottweiler</option>
-            <option value="Schnauzer">Schnauzer</option>
-            <option value="Shih Tzu">Shih Tzu</option>
-            <option value="Terrier">Terrier</option>
+          <option value="Beagle">Beagle</option>
+          <option value="Bichon Frise">Bichon Frise</option>
+          <option value="Bloodhound">Bloodhound</option>        
+          <option value="Bull Terrier">Bull Terrier</option>
+          <option value="Chow Chow">Chow Chow</option>
+          <option value="Cocker Spaniel">Cocker Spaniel</option>
+          <option value="Collie">Collie</option>
+          <option value="Dalmatian">Dalmatian</option>
+          <option value="Golden Retriever">Golden Retriever</option>
+          <option value="Great Dane">Great Dane</option>
+          <option value="Great Pyrenees">Great Pyrenees</option>
+          <option value="Husky">Husky</option>
+          <option value="Jack Russell Terrier">Jack Russell Terrier</option>
+          <option value="Labrador Retriever">Labrador Retriever</option>
+          <option value="Mastiff">Mastiff</option>
+          <option value="Pug">Pug</option>
+          <option value="Rottweiler">Rottweiler</option>
+          <option value="Schnauzer">Schnauzer</option>
+          <option value="Shih Tzu">Shih Tzu</option>
+          <option value="Terrier">Terrier</option>
         </select>
 
            <!-- REMOVED - MAYBE PUT BACK AFTER ENHANCING API CALL  -->
@@ -275,8 +277,12 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9
 </style>
 <hr>
 <h1>Adding a google map</h1>
+<div id="floating-panel">
+  <input id="address" type="textbox" value="Brooklyn, NY" />
+  <input id="submit" type="button" value="Geocode" />
+</div>
 <div id="map">Here is the google map</div>
-<script>
+<!-- <script>
   // Initialize and add the map       
   // function initMap(){
   //     const uluru = {lat: -25.344, lng: 131.036};
@@ -311,9 +317,47 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9
             animation: google.maps.Animation.DROP,
             draggable: true,
       });
-    }
+  }
+</script> -->
 
-</script>
+<script>
+  function initMap() {
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 17,
+      center: { lat: 40.650002, lng: 	-73.949997 },
+    });
+    const geocoder = new google.maps.Geocoder();
+    document.getElementById("submit").addEventListener("click", () => {
+      geocodeAddress(geocoder, map);
+    });
+  }
+
+  function geocodeAddress(geocoder, resultsMap) {
+    const address = document.getElementById("address").value;
+    geocoder.geocode({ address: address }, (results, status) => {
+      if (status === "OK") {
+        resultsMap.setCenter(results[0].geometry.location);
+        new google.maps.Marker({
+          map: resultsMap,
+          position: results[0].geometry.location,
+
+        });
+      } else {
+        alert(
+          "Geocode was not successful for the following reason: " + status
+        );
+      }
+    });
+  }
+   // The marker, positioned at brooklyn
+  //  const iconBase =  'icons/'
+  //       const marker = new google.maps.Marker({
+  //           position: results[0].geometry.location,
+  //           icon: `${iconBase}paw_icon_.png`,
+  //           animation: google.maps.Animation.DROP,
+  //           draggable: true,
+  // //     });
+
 </script>
 
 
@@ -328,22 +372,22 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9
 <!-- <script src="./frontend.js"></script>--> 
 
 
-<!-- <script>
-var sNeeds;
-$(document).ready(function(){
-        $(‘input[type=“checkbox”]’).click(function(){
-            if($(this).prop(“checked”) == true){
-               sNeeds = “&special_needs=true”;
-            }
-            else if($(this).prop(“checked”) == false){
-                $(“#result”).html(“Checkbox is unchecked.“);
-              sNeeds = “”
-            }
-        });
-    });
-</script> -->
+// <!-- <script>
+// var sNeeds;
+// $(document).ready(function(){
+//         $(‘input[type=“checkbox”]’).click(function(){
+//             if($(this).prop(“checked”) == true){
+//                sNeeds = “&special_needs=true”;
+//             }
+//             else if($(this).prop(“checked”) == false){
+//                 $(“#result”).html(“Checkbox is unchecked.“);
+//               sNeeds = “”
+//             }
+//         });
+//     });
+// </script> -->
 
 
-</body>  
-</html>
-<!-- End of Document -->
+// </body>  
+// </html>
+// <!-- End of Document -->
