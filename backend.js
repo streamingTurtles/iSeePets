@@ -79,10 +79,10 @@ var sNeeds;
 function apiCallForAnimals(type, zip, breed, sNeed, longitude, latitude) {
   console.log("GET ME SOME ANIMALS - API CALL MADE");
   fetch(
-    // url=`https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}${sNeed}&status=adoptable&distance=25&limit=100`,
+    url=`https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}${sNeed}&status=adoptable&distance=25&limit=100`,
 
 // testing for location:
-url=`https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}${sNeed}&status=adoptable&distance=25&limit=100`,
+// url=`https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}&location=${longitude}&location=${latitude}${sNeed}&status=adoptable&distance=25&limit=100`,
 
 
 
