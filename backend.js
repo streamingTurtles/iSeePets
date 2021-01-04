@@ -83,6 +83,7 @@ function apiCallForAnimals(type, zip, breed, sNeed, longitude, latitude) {
 
     // testing for location:
     // url=`https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}&location=${longitude}&location=${latitude}${sNeed}&status=adoptable&distance=25&limit=100`,
+    // >>>>>>> 090134fef59b4164ae344183ad76715fcc1a572e
 
     // =======
     // function apiCallForAnimals(type, zip, breed, sNeeds) {
