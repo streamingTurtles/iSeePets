@@ -17,7 +17,7 @@
         <a class="navbar-item" >
           <h1 class="title">
             iSeePets<p class="subtitle">
-            Find your <strong>Special Pet</strong>!
+            Find your<strong>Perfect Pets</strong>!
           </p>
           </h1>
           <br>
@@ -105,30 +105,35 @@
           <option value="cat">cat</option>
           <option value="other">other</option>
         </select>-->
-        <label for="dogbreed">Breed:</label>
+
+
+
+
+
+        <label for="dogbreed">breed:</label>
         <!-- added in 20 breed options, we can add more  -->
         <select name="dogbreed" id="dogbreed" class="form-control">
           <option value="&special_needs=true">SPECAL NEEDS PETS</option>
-          <option value="Shih Tzu">Shih Tzu</option>
-            <option value="Labrador Retriever">Labrador Retriever</option>
-            <option value="Golden Retriever">Golden Retriever</option>
-            <option value="Beagle">Beagle</option>
-            <option value="Terrier">Terrier</option>
-            <option value="Husky">Husky</option>
-            <option value="Rottweiler">Rottweiler</option>
-            <option value="Cocker Spaniel">Cocker Spaniel</option>
-            <option value="Mastiff">Mastiff</option>
-            <option value="Great Dane">Great Dane</option>
-            <option value="Schnauzer">Schnauzer</option>
-            <option value="Pug">Pug</option>
-            <option value="Collie">Collie</option>
-            <option value="Chow Chow">Chow Chow</option>
-            <option value="Bull Terrier">Bull Terrier</option>
-            <option value="Jack Russell Terrier">Jack Russell Terrier</option>
-            <option value="Dalmatian">Dalmatian</option>
-            <option value="Bichon Frise">Bichon Frise</option>
-            <option value="Great Pyrenees">Great Pyrenees</option>
-            <option value="Bloodhound">Bloodhound</option>        
+          <option value="shih tzu">shih tzu</option>
+            <option value="labrador retriever">labrador retriever</option>
+            <option value="golden retriever">golden retriever</option>
+            <option value="beagle">beagle</option>
+            <option value="terrier">terrier</option>
+            <option value="husky">husky</option>
+            <option value="rottweiler">rottweiler</option>
+            <option value="cocker spaniel">cocker spaniel</option>
+            <option value="mastiff">mastiff</option>
+            <option value="great dane">great dane</option>
+            <option value="schnauzer">schnauzer</option>
+            <option value="pug">pug</option>
+            <option value="collie">collie</option>
+            <option value="chow chow">chow chow</option>
+            <option value="bull terrier">bull terrier</option>
+            <option value="jack russell terrier">jack russell terrier</option>
+            <option value="dalmatian">dalmatian</option>
+            <option value="bichon frise">bichon frise</option>
+            <option value="great pyrenees">great pyrenees</option>
+            <option value="bloodhound">bloodhound</option>        
         </select>
 
            <!-- REMOVED - MAYBE PUT BACK AFTER ENHANCING API CALL  -->
@@ -158,6 +163,14 @@
 
 <!--         <input type="checkbox" id="s_Needs" name="sNeeds" value = 'true'>
         <label for="specialNeeds"> Click for Special Needs</label><br><br> -->
+
+
+
+
+
+
+
+
         <!-- <input class="subBtn" type="button" value="Submit" onclick="searchPets()"> -->
         <!-- <input class="subBtn" type="button" value="Search" onclick="searchPets()">  -->
         <input class="subBtn" type="submit" value="Search" onclick="searchPets()">
@@ -167,8 +180,8 @@
       <h3 class="category">Cats</h3>
       <form action="/action_page.php">
         
-        <label for="catbreed">Breed:</label>        
-        <!-- added in 50 breed options, we can add more  -->
+        <label for="catbreed">breed:</label>        
+        <!-- added in 47 breed options, we can add more  -->
         <select name="catbreed" id="catbreed" class="form-control">
             <option></option>
             <option value="Abyssinian">Abyssinian</option>
@@ -303,55 +316,20 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9
 <div id="map">Here is the google map</div>
 <script>
   // Initialize and add the map       
-  // function initMap(){
-  //     const uluru = {lat: -25.344, lng: 131.036};
-  //     // The map, centered at Uluru
-  //     const map = new google.maps.Map(document.getElementById("map"),
-  //     {
-  //         zoom: 4,
-  //         center: uluru,
-  //     });
-  //     // The marker, positioned at Ulura
-  //     const marker = new google.maps.Marker({
-  //         position: uluru,
-  //         map: map,
-  //     });
-  // }
-
   function initMap(){
-      const myLatLng = {lat: 40.6782, lng: -73.9442};
-      // The map, centered at brooklyn
+      const uluru = {lat: -25.344, lng: 131.036};
+      // The map, centered at Uluru
       const map = new google.maps.Map(document.getElementById("map"),
       {
           zoom: 4,
-          center: myLatLng,
+          center: uluru,
       });
-    
-        // The marker, positioned at brooklyn
-        const iconBase =  'icons/'
-        const icons = {
-          dog: {
-            icon: iconBase + 'dog_face.png'
-          },
-          cat: {
-            icon: iconBase + 'cat_face.png'
-          },
-          other:{
-            icon: iconBase + 'other_pet.png'
-          },
-        }
-        function addMarker(feature) {
-        const marker = new google.maps.Marker({
-            position: feature.position,
-            icon: icons[feature.type].icon,
-            map: map,    
-            size: new google.maps.Size(2,10),
-            animation: google.maps.Animation.DROP,
-            draggable: true,
+      // The marker, positioned at Ulura
+      const marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
       });
-    }
-    }
-</script>
+  }
 </script>
 
 
@@ -361,7 +339,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9
 <!-- jQuery regular version - slim version above does not support Ajax     -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --> 
-<script src="./backend.js"></script>
+<script src="./_backend.js"></script>
 
 <!-- <script src="./frontend.js"></script>--> 
 
