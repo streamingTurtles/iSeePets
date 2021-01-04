@@ -76,10 +76,16 @@ var sNeeds;
   //   });
 
 // <<<<<<< luwenxisong
-function apiCallForAnimals(type, zip, breed, sNeed) {
+function apiCallForAnimals(type, zip, breed, sNeed, longitude, latitude) {
   console.log("GET ME SOME ANIMALS - API CALL MADE");
   fetch(
-    url=`https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}${sNeed}&status=adoptable&distance=25&limit=100`,
+    // url=`https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}${sNeed}&status=adoptable&distance=25&limit=100`,
+
+// testing for location:
+url=`https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}${sNeed}&status=adoptable&distance=25&limit=100`,
+
+
+
 // =======
 // function apiCallForAnimals(type, zip, breed, sNeeds) {
 //   console.log("sNeeds variable is: ", sNeeds);
@@ -164,7 +170,8 @@ function searchPets() {
       "******** FORM SUBMITTED - HERE ARE YOUR SELETIONS TO BUILD API QUERY *********"
     );
     // var animalType = $(".tablinks").val();
-
+    var longitude = 0;
+    var latitude = 0;
     var type = petType;
     var zip = $("#zip").val();
     var breed
@@ -179,7 +186,7 @@ function searchPets() {
     console.log("the breed you selected is: ", breed);
     console.log("your zip code is: ", zip);
     console.log("Special needs", sNeed);
-    apiCallForAnimals(type, zip, breed, sNeed);
+    apiCallForAnimals(type, zip, breed, sNeed, longitude, latitude);
   });
 }
 function searchPetsCat() {
