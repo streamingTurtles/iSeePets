@@ -316,8 +316,12 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9
 </style>
 <hr>
 <h1>Adding a google map</h1>
+<div id="floating-panel">
+  <input id="address" type="textbox" value="Brooklyn, NY" />
+  <input id="submit" type="button" value="Geocode" />
+</div>
 <div id="map">Here is the google map</div>
-<script>
+<!-- <script>
   // Initialize and add the map       
   function initMap(){
       const uluru = {lat: -25.344, lng: 131.036};
@@ -332,6 +336,36 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9
           position: uluru,
           map: map,
       });
+  }
+</script> -->
+
+<script>
+  function initMap() {
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 17,
+      center: { lat: 40.650002, lng: 	-73.949997 },
+    });
+    const geocoder = new google.maps.Geocoder();
+    document.getElementById("submit").addEventListener("click", () => {
+      geocodeAddress(geocoder, map);
+    });
+  }
+
+  function geocodeAddress(geocoder, resultsMap) {
+    const address = document.getElementById("address").value;
+    geocoder.geocode({ address: address }, (results, status) => {
+      if (status === "OK") {
+        resultsMap.setCenter(results[0].geometry.location);
+        new google.maps.Marker({
+          map: resultsMap,
+          position: results[0].geometry.location,
+        });
+      } else {
+        alert(
+          "Geocode was not successful for the following reason: " + status
+        );
+      }
+    });
   }
 </script>
 
