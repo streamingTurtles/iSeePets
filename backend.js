@@ -134,6 +134,7 @@ function getMeSomeAnimals(responseJson) {
   }
 
   $("#results").html("");
+
   // show the searched animals - to populate in selection.html page
   for (let i = 0; i < responseJson.animals.length; i++) {
     $("#results").append(`<div class='icard'> 
@@ -212,3 +213,30 @@ function searchPetsCat() {
     apiCallForAnimals(type, zip, breed, sNeed);
   });
 }
+
+// TRYING TO EMPTY PAGE
+// $("tablinks active").onclick("click", function (event) {
+//   event.preventDefault();
+//   $(".resultImg").empty();
+// });
+// function clear() {
+//  $(".tabcontent").on("click", function (event) {
+//     event.preventDefault();
+//     $("#resultImg").empty();
+
+// $(document).ready(function(){
+//   $("button").click(function(){
+//     $("div").empty();
+
+// // CLICK HANDLERS
+// // ==========================================================
+
+// // .on("click") function associated with the Search Button
+// $("#run-search").on("click", function (event) {
+//   // This line allows us to take advantage of the HTML "submit" property
+//   // This way we can hit enter on the keyboard and it registers the search
+//   // (in addition to clicks). Prevents the page from reloading on form submit.
+
+//   // Empty the region associated with the articles
+//   clear();
+// }

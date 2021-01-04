@@ -108,27 +108,27 @@
         <label for="dogbreed">Breed:</label>
         <!-- added in 20 breed options, we can add more  -->
         <select name="dogbreed" id="dogbreed" class="form-control">
-          <option value="&special_needs=true">SPECAL NEEDS PETS</option>
-          <option value="Shih Tzu">Shih Tzu</option>
-            <option value="Labrador Retriever">Labrador Retriever</option>
-            <option value="Golden Retriever">Golden Retriever</option>
+            <option value="&special_needs=true">SPECAL NEEDS PETS</option>
             <option value="Beagle">Beagle</option>
-            <option value="Terrier">Terrier</option>
-            <option value="Husky">Husky</option>
-            <option value="Rottweiler">Rottweiler</option>
-            <option value="Cocker Spaniel">Cocker Spaniel</option>
-            <option value="Mastiff">Mastiff</option>
-            <option value="Great Dane">Great Dane</option>
-            <option value="Schnauzer">Schnauzer</option>
-            <option value="Pug">Pug</option>
-            <option value="Collie">Collie</option>
-            <option value="Chow Chow">Chow Chow</option>
-            <option value="Bull Terrier">Bull Terrier</option>
-            <option value="Jack Russell Terrier">Jack Russell Terrier</option>
-            <option value="Dalmatian">Dalmatian</option>
             <option value="Bichon Frise">Bichon Frise</option>
-            <option value="Great Pyrenees">Great Pyrenees</option>
             <option value="Bloodhound">Bloodhound</option>        
+            <option value="Bull Terrier">Bull Terrier</option>
+            <option value="Chow Chow">Chow Chow</option>
+            <option value="Cocker Spaniel">Cocker Spaniel</option>
+            <option value="Collie">Collie</option>
+            <option value="Dalmatian">Dalmatian</option>
+            <option value="Golden Retriever">Golden Retriever</option>
+            <option value="Great Dane">Great Dane</option>
+            <option value="Great Pyrenees">Great Pyrenees</option>
+            <option value="Husky">Husky</option>
+            <option value="Jack Russell Terrier">Jack Russell Terrier</option>
+            <option value="Labrador Retriever">Labrador Retriever</option>
+            <option value="Mastiff">Mastiff</option>
+            <option value="Pug">Pug</option>
+            <option value="Rottweiler">Rottweiler</option>
+            <option value="Schnauzer">Schnauzer</option>
+            <option value="Shih Tzu">Shih Tzu</option>
+            <option value="Terrier">Terrier</option>
         </select>
 
            <!-- REMOVED - MAYBE PUT BACK AFTER ENHANCING API CALL  -->
@@ -304,28 +304,15 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9
     
         // The marker, positioned at brooklyn
         const iconBase =  'icons/'
-        const icons = {
-          dog: {
-            icon: iconBase + 'dog_face.png'
-          },
-          cat: {
-            icon: iconBase + 'cat_face.png'
-          },
-          other:{
-            icon: iconBase + 'other_pet.png'
-          },
-        }
-        function addMarker(feature) {
         const marker = new google.maps.Marker({
-            position: feature.position,
-            icon: icons[feature.type].icon,
+            position: myLatLng,
+            icon: `${iconBase}paw_icon_.png`,
             map: map,    
-            size: new google.maps.Size(2,10),
             animation: google.maps.Animation.DROP,
             draggable: true,
       });
     }
-    }
+
 </script>
 </script>
 
