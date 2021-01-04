@@ -17,7 +17,7 @@
         <a class="navbar-item" >
           <h1 class="title">
             iSeePets<p class="subtitle">
-            Find your <strong>Special Pets</strong>!
+            Find your <strong>Special Pet</strong>!
           </p>
           </h1>
           <br>
@@ -297,20 +297,55 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9
 <div id="map">Here is the google map</div>
 <script>
   // Initialize and add the map       
+  // function initMap(){
+  //     const uluru = {lat: -25.344, lng: 131.036};
+  //     // The map, centered at Uluru
+  //     const map = new google.maps.Map(document.getElementById("map"),
+  //     {
+  //         zoom: 4,
+  //         center: uluru,
+  //     });
+  //     // The marker, positioned at Ulura
+  //     const marker = new google.maps.Marker({
+  //         position: uluru,
+  //         map: map,
+  //     });
+  // }
+
   function initMap(){
-      const uluru = {lat: -25.344, lng: 131.036};
-      // The map, centered at Uluru
+      const myLatLng = {lat: 40.6782, lng: -73.9442};
+      // The map, centered at brooklyn
       const map = new google.maps.Map(document.getElementById("map"),
       {
           zoom: 4,
-          center: uluru,
+          center: myLatLng,
       });
-      // The marker, positioned at Ulura
-      const marker = new google.maps.Marker({
-          position: uluru,
-          map: map,
+    
+        // The marker, positioned at brooklyn
+        const iconBase =  'icons/'
+        const icons = {
+          dog: {
+            icon: iconBase + 'dog_face.png'
+          },
+          cat: {
+            icon: iconBase + 'cat_face.png'
+          },
+          other:{
+            icon: iconBase + 'other_pet.png'
+          },
+        }
+        function addMarker(feature) {
+        const marker = new google.maps.Marker({
+            position: feature.position,
+            icon: icons[feature.type].icon,
+            map: map,    
+            size: new google.maps.Size(2,10),
+            animation: google.maps.Animation.DROP,
+            draggable: true,
       });
-  }
+    }
+    }
+</script>
 </script>
 
 
