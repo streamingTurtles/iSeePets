@@ -1,4 +1,4 @@
-<!-- Start of Document -->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -64,8 +64,11 @@
           </a>
           </div>
         </div>
-    
+
+        <img src="Assets/cat_pic.png"  width="200" height="40" class="c-card__image" alt="Card Image" />
+
         <div class="navbar-end">
+
           <div class="navbar-item">
            
           </div>
@@ -81,7 +84,6 @@
       <!-- added value attribute to get value() for building specific animal type API request -->
       <button class="tablinks" onclick="changetabs(event, 'cats')" value="cat">Cats</button>   
       <!-- added value attribute to get value() for building specific animal type API request -->
-      <button class="tablinks" onclick="changetabs(event, 'other')" value="other">Other</button>
     </div>
     <!-- DOGS  -->
     <div id="dogs" class="tabcontent">
@@ -100,7 +102,6 @@
         <!-- added for pet type - need this in the form  -->
 
         <!-- <label for="petType">Type of Pet, Dog or Cat:</label>
-
         <select name="dogsCatsOther" id="petType" class="form-control">
           <option value="dog">dog</option>
           <option value="cat">cat</option>
@@ -249,31 +250,7 @@
       </form>
     </div>
     <!-- Ohter Animals  -->
-    <div id="other" class="tabcontent">
-      <h3 class="category">other</h3>
-      <form action="/action_page.php">
-        <label for="otrtype">type:</label>
-        <select name="otrtype" id="otrtype">
-        </select> 
-        <label for="gender">gender:</label>
-        <select name="gender" id="gender">
-          <option value="Male">male</option>
-          <option value="Female">female</option>
-        </select>
-        <label for="size">size:</label>
-        <select name="size" id="size">
-          <option value="small">small</option>
-          <option value="medium">medium</option>
-          <option value="large">large</option>
-          <option value="xlarge">x-large</option>
-        </select>
-        <br><br>
-        <input type="checkbox" name="special" class="specialNeeds">
-        <label for="special">Special needs pets only</label><br>
-        <!-- <input class="subBtn" type="button" value="Submit" onclick="searchPets()"> -->
-        <input class="subBtn" type="button" value="Search" onclick="searchPets()">
-      </form>
-    </div>
+    
 
 
   <!-- removed iFrame - was producing the following error: "Google Maps Platform rejected your request. The provided API key is invalid."  -->
@@ -314,8 +291,12 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9
 </style>
 <hr>
 <h1>Adding a google map</h1>
+<div id="floating-panel">
+  <input id="address" type="textbox" value="Brooklyn, NY" />
+  <input id="submit" type="button" value="Geocode" />
+</div>
 <div id="map">Here is the google map</div>
-<script>
+<!-- <script>
   // Initialize and add the map       
   function initMap(){
       const uluru = {lat: -25.344, lng: 131.036};
@@ -330,6 +311,36 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9
           position: uluru,
           map: map,
       });
+  }
+</script> -->
+
+<script>
+  function initMap() {
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 17,
+      center: { lat: 40.650002, lng: 	-73.949997 },
+    });
+    const geocoder = new google.maps.Geocoder();
+    document.getElementById("submit").addEventListener("click", () => {
+      geocodeAddress(geocoder, map);
+    });
+  }
+
+  function geocodeAddress(geocoder, resultsMap) {
+    const address = document.getElementById("address").value;
+    geocoder.geocode({ address: address }, (results, status) => {
+      if (status === "OK") {
+        resultsMap.setCenter(results[0].geometry.location);
+        new google.maps.Marker({
+          map: resultsMap,
+          position: results[0].geometry.location,
+        });
+      } else {
+        alert(
+          "Geocode was not successful for the following reason: " + status
+        );
+      }
+    });
   }
 </script>
 
