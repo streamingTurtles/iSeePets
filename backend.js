@@ -145,6 +145,8 @@ function geocodeAddress(geocoder, resultsMap) {
         map: resultsMap,
         position: results[0].geometry.location,
         icon: "icons/paw_icon_smaller.png",
+        animation: google.maps.Animation.BOUNCE,
+        draggable: true,
 
         // "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
       });
