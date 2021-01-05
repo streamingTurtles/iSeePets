@@ -7,6 +7,7 @@
     <title>iSeePets</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/mystyles.css" />
+    <script src="https://kit.fontawesome.com/7c715641eb.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <nav id="navbar" class="navbar" role="navigation" aria-label="main navigation">
@@ -83,8 +84,19 @@
       <!-- added value attribute to get value() for building specific animal type API request -->
       <button class="tablinks" onclick="changetabs(event, 'other')" value="other">Other</button>
     </div>
+
     <!-- DOGS  -->
     <div id="dogs" class="tabcontent">
+    <!-- LOCAL STORAGE for DOGS ADDED, 01/05/2020, TUES  -->
+     <form id="doggies">
+      <h2><strong>Type in your Favorite Dog Pet Breed:</strong></h2>
+      <input id="dogFav" type="text" placeholder="Favorite Dog Breed"> 
+   </form>
+   <ul id="doggiesUL"></ul>
+   <button id="dogsClearLS">Clear Favorites</button>
+   <br>
+   <br>
+   <!--  -->
       <h3 class="category">Dogs</h3>
       <form action="/action_page.php">
 
@@ -166,6 +178,16 @@
     </div>
     <!-- Cats  -->
     <div id="cats" class="tabcontent">
+    <!-- LOCAL STORAGE for CATS ADDED, 01/05/2020, TUES  -->
+     <form id="kitties">
+      <h2><strong>Type in your Favorite Cat Pet Breed:</strong></h2>
+      <input id="catFav" type="text" placeholder="Favorite Cat Breed"> 
+      </form>
+      <ul id="kittiesUL"></ul>
+      <button id="catsClearLS">Clear Favorites</button>
+      <br>
+      <br>
+      <!--  -->
       <h3 class="category">Cats</h3>
       <form action="/action_page.php">
         

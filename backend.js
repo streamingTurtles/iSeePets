@@ -126,7 +126,7 @@ function apiCallForAnimals(type, zip, breed, sNeed, longitude, latitude) {
 // ***************************************************************************************** //
 function initMap() {
   var options = {
-    zoom: 17,
+    zoom: 15,
     center: { lat: 40.650002, lng: -73.949997 }, // brooklyn coordinates @ 11229
   };
   const map = new google.maps.Map(document.getElementById("map"), options);
@@ -207,7 +207,7 @@ function getMeSomeAnimals(responseJson) {
                 }<p>
                 <option id='seeMeOnMap${[i]}' value="${
       responseJson.animals[i].contact.address.postcode
-    }">"CLICK HERE" to Map Me</option>
+    }"> "CLICK HERE" to Map Me</option>
                 </div>`);
   }
   // PAC added 01/04/2020, Sunday
@@ -292,3 +292,71 @@ function searchPetsCat() {
     apiCallForAnimals(type, zip, breed, sNeed);
   });
 }
+// DOG LOCAL STORAGE
+// ***************************************************************************************** //
+const dogform = document.querySelector("form#doggies");
+const ul_forDog = document.querySelector("ul#doggiesUL");
+const clearButton = document.getElementById("dogsClearLS");
+const input_dogInfo = document.getElementById("dogFav");
+let dogFavArray = localStorage.getItem("theDogs")
+  ? JSON.parse(localStorage.getItem("theDogs"))
+  : [];
+console.log("DOG FAVORITS: ", dogFavArray);
+localStorage.setItem("theDogs", JSON.stringify(dogFavArray));
+const Dogdata = JSON.parse(localStorage.getItem("theDogs"));
+const dogLiMaker = (text) => {
+  const li_forDog = document.createElement("li");
+  li_forDog.textContent = text;
+  ul_forDog.appendChild(li_forDog);
+};
+dogform.addEventListener("submit", function (e) {
+  e.preventDefault(); // don't submit to server
+  dogFavArray.push(input_dogInfo.value);
+  localStorage.setItem("theDogs", JSON.stringify(dogFavArray));
+  dogLiMaker(input_dogInfo.value);
+  input_dogInfo.value = "";
+});
+Dogdata.forEach((dogFav) => {
+  dogLiMaker(dogFav);
+});
+clearButton.addEventListener("click", function () {
+  localStorage.clear();
+  while (ul_forDog.firstChild) {
+    ul_forDog.removeChild(ul_forDog.firstChild);
+  }
+  dogFavArray = [];
+});
+// CAT LOCAL STORAGE
+// ***************************************************************************************** //
+const catform = document.querySelector("form#kitties");
+const ul_forCat = document.querySelector("ul#kittiesUL");
+const clearButtonForCat = document.getElementById("catsClearLS");
+const input_catInfo = document.getElementById("catFav");
+let catFavArray = localStorage.getItem("theCats")
+  ? JSON.parse(localStorage.getItem("theCats"))
+  : [];
+console.log("CAT FAVORITS: ", catFavArray);
+localStorage.setItem("theCats", JSON.stringify(catFavArray));
+const Catdata = JSON.parse(localStorage.getItem("theCats"));
+const CatLiMaker = (text) => {
+  const li_forCat = document.createElement("li");
+  li_forCat.textContent = text;
+  ul_forCat.appendChild(li_forCat);
+};
+catform.addEventListener("submit", function (e) {
+  e.preventDefault(); // don't submit to server
+  catFavArray.push(input_catInfo.value);
+  localStorage.setItem("theCats", JSON.stringify(catFavArray));
+  CatLiMaker(input_catInfo.value);
+  input_catInfo.value = "";
+});
+Catdata.forEach((catFav) => {
+  CatLiMaker(catFav);
+});
+clearButtonForCat.addEventListener("click", function () {
+  localStorage.clear();
+  while (ul_forCat.firstChild) {
+    ul_forCat.removeChild(ul_forCat.firstChild);
+  }
+  catFavArray = [];
+});
