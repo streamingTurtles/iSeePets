@@ -102,10 +102,17 @@ body {
   border-radius: 15px;
   margin-left: 1%;
   margin-top: 1%;
-}
+  
+ }
+ .icard h3{
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #401719;
+  }
+  footer{
+    text-align: center;
+    background-color: #47B7BD;
 
-.icard h3 {
-  text-transform: uppercase;
-  font-weight: bold;
-  color: #401719;
-}
+  }
+
+
