@@ -8,9 +8,6 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/mystyles.css" />
   </head>
-
-
-
   <body>
     <nav id="navbar" class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
@@ -111,6 +108,7 @@
         <label for="dogbreed">Breed:</label>
         <!-- added in 20 breed options, we can add more  -->
         <select name="dogbreed" id="dogbreed" class="form-control">
+          <option value="&special_needs=true"></option>
           <option value="Beagle">Beagle</option>
           <option value="Bichon Frise">Bichon Frise</option>
           <option value="Bloodhound">Bloodhound</option>        
@@ -131,6 +129,7 @@
           <option value="Schnauzer">Schnauzer</option>
           <option value="Shih Tzu">Shih Tzu</option>
           <option value="Terrier">Terrier</option>
+          <!-- <option value="&special_needs=true">SPECAL NEEDS PETS</option> -->
         </select>
 
            <!-- REMOVED - MAYBE PUT BACK AFTER ENHANCING API CALL  -->
@@ -237,6 +236,33 @@
         <input class="subBtn" type="submit" value="Search" onclick="searchPetsCat()">
       </form>
     </div>
+    <!-- Ohter Animals  -->
+    <div id="other" class="tabcontent">
+      <h3 class="category">other</h3>
+      <form action="/action_page.php">
+        <label for="otrtype">type:</label>
+        <select name="otrtype" id="otrtype">
+        </select> 
+        <label for="gender">gender:</label>
+        <select name="gender" id="gender">
+          <option value="Male">male</option>
+          <option value="Female">female</option>
+        </select>
+        <label for="size">size:</label>
+        <select name="size" id="size">
+          <option value="small">small</option>
+          <option value="medium">medium</option>
+          <option value="large">large</option>
+          <option value="xlarge">x-large</option>
+        </select>
+        <br><br>
+        <input type="checkbox" name="special" class="specialNeeds">
+        <!--  -->
+        <label for="special">Special needs pets only</label><br>
+        <!-- <input class="subBtn" type="button" value="Submit" onclick="searchPets()"> -->
+        <input class="subBtn" type="button" value="Search" onclick="searchPets()">
+      </form>
+    </div>
 
 
   <!-- removed iFrame - was producing the following error: "Google Maps Platform rejected your request. The provided API key is invalid."  -->
@@ -265,108 +291,31 @@
 
 
 <!-- adding in google map -->
-<script defer
+<!-- <script defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9V0psbmE8&callback=initMap">
-</script>
+</script> -->
 <!-- internal CSS style for our map -->
 <style>
     #map{
-        height: 400px;
+        height: 1000px;
         width: 100%
     }
 </style>
 <hr>
 <h1>Adding a google map</h1>
-<div id="floating-panel">
-  <input id="address" type="textbox" value="Brooklyn, NY" />
-  <input id="submit" type="button" value="Geocode" />
+<!-- <div id="floating-panel" > -->  
+<input id="address" type="textbox" value="Brooklyn, NY" />
+<input id="submit" type="button" value="Geocode" class="trick" />
+<div id="map">
+
 </div>
-<div id="map">Here is the google map</div>
-<script>
-  // Initialize and add the map       
-  // function initMap(){
-  //     const uluru = {lat: -25.344, lng: 131.036};
-  //     // The map, centered at Uluru
-  //     const map = new google.maps.Map(document.getElementById("map"),
-  //     {
-  //         zoom: 4,
-  //         center: uluru,
-  //     });
-  //     // The marker, positioned at Ulura
-  //     const marker = new google.maps.Marker({
-  //         position: uluru,
-  //         map: map,
-  //     });
-  // }
+<hr>
+<br><br>
+<hr>
+<!-- google api key script tag -->
 
-  function initMap(){
-      const myLatLng = {lat: 40.6782, lng: -73.9442};
-      // The map, centered at brooklyn
-      const map = new google.maps.Map(document.getElementById("map"),
-      {
-          zoom: 4,
-          center: myLatLng,
-      });
-    
-
-      const image = {
-          url:
-          'icons/paw_icon_smaller.png',
-          // This marker is 20 pixels wide by 32 pixels high.
-          size: new google.maps.Size(40, 40),
-          // The origin for this image is (0, 0).
-          origin: new google.maps.Point(0, 0),
-          // The anchor for this image is the base of the flagpole at (0, 32).
-          anchor: new google.maps.Point(0, 32),
-        };
-        // The marker, positioned at brooklyn
-        const marker = new google.maps.Marker({
-            position: myLatLng,
-            icon: image,
-            map: map,    
-            animation: google.maps.Animation.DROP,
-            draggable: true,
-      });
-  }
-</script>
-<!-- <script>
-  function initMap() {
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 17,
-      center: { lat: 40.650002, lng: 	-73.949997 },
-    });
-    const geocoder = new google.maps.Geocoder();
-    document.getElementById("submit").addEventListener("click", () => {
-      geocodeAddress(geocoder, map);
-    });
-  }
-
-  function geocodeAddress(geocoder, resultsMap) {
-    const address = document.getElementById("address").value;
-    geocoder.geocode({ address: address }, (results, status) => {
-      if (status === "OK") {
-        resultsMap.setCenter(results[0].geometry.location);
-        new google.maps.Marker({
-          map: resultsMap,
-          position: results[0].geometry.location,
-
-        });
-      } else {
-        alert(
-          "Geocode was not successful for the following reason: " + status
-        );
-      }
-    });
-  } -->
-   <!-- // The marker, positioned at brooklyn
-  //  const iconBase =  'icons/'
-  //       const marker = new google.maps.Marker({
-  //           position: results[0].geometry.location,
-  //           icon: `${iconBase}paw_icon_.png`,
-  //           animation: google.maps.Animation.DROP,
-  //           draggable: true,
-  // //     }); -->
-
+<script defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9V0psbmE8&callback=initMap">
 </script>
 
 
@@ -377,25 +326,6 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --> 
 <script src="./backend.js"></script>
-
-<!-- <script src="./frontend.js"></script>--> 
-
-
-// <!-- <script>
-// var sNeeds;
-// $(document).ready(function(){
-//         $(‘input[type=“checkbox”]’).click(function(){
-//             if($(this).prop(“checked”) == true){
-//                sNeeds = “&special_needs=true”;
-//             }
-//             else if($(this).prop(“checked”) == false){
-//                 $(“#result”).html(“Checkbox is unchecked.“);
-//               sNeeds = “”
-//             }
-//         });
-//     });
-// </script> -->
-
 
 // </body>  
 // </html>

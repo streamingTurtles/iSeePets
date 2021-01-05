@@ -94,18 +94,6 @@ body {
   margin-top: 80px;
 }
 
-#centered {
-  padding: 5% 5%;
-}
-
-#articleImg {
-  margin-top: 5%;
-}
-
-#articleBody {
-  padding: 5% 5%;
-}
-
 .icard {
   display: inline-block;
   width: 32%;
