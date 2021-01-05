@@ -23,6 +23,9 @@ function defaultIsDog() {
   console.log(petType);
 }
 function changetabs(evt, tabname) {
+  if (document.querySelector("#results").children.length) {
+    $("#results").html("");
+  }
   var i;
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
@@ -35,12 +38,6 @@ function changetabs(evt, tabname) {
   petType = evt.currentTarget.value;
   console.log(petType);
 }
-
-
-
-
-
-
 
 // ***************************************************************************************** //
 var token = "";
@@ -70,51 +67,36 @@ function getNewToken() {
 }
 getNewToken();
 
-
-
-
-
-
-
-
-
-
-
-
 // ***************************************************************************************** //
 // retrieves access token & makes API call to get animals
 var sNeeds;
-	// $(document).ready(function(){
-  //       $(‘input[type=“checkbox”]’).click(function(){
-  //           if($(this).prop(“checked”) == true){
-  //              sNeeds = “&special_needs=true”;
-  //           }
-  //           else if($(this).prop(“checked”) == false){
-  //               $(“#result”).html(“Checkbox is unchecked.“);
-  //             sNeeds = “”
-  //           }
-  //       });
-  //   });
+// $(document).ready(function(){
+//       $(‘input[type=“checkbox”]’).click(function(){
+//           if($(this).prop(“checked”) == true){
+//              sNeeds = “&special_needs=true”;
+//           }
+//           else if($(this).prop(“checked”) == false){
+//               $(“#result”).html(“Checkbox is unchecked.“);
+//             sNeeds = “”
+//           }
+//       });
+//   });
 
 // <<<<<<< luwenxisong
 function apiCallForAnimals(type, zip, breed, sNeed, longitude, latitude) {
   console.log("GET ME SOME ANIMALS - API CALL MADE");
   fetch(
-    url=`https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}${sNeed}&status=adoptable&distance=25&limit=100`,
-
-// testing for location:
-// url=`https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}&location=${longitude}&location=${latitude}${sNeed}&status=adoptable&distance=25&limit=100`,
-
-
-
-// =======
-// function apiCallForAnimals(type, zip, breed, sNeeds) {
-//   console.log("sNeeds variable is: ", sNeeds);
-//   console.log("GET ME SOME ANIMALS - API CALL MADE");
-//   fetch(
-//     // value=“&special_needs=true”
-//     `https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}&special_needs=${sNeeds}&status=adoptable&distance=25&limit=100`,
-// >>>>>>> main
+    (url = `https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}${sNeed}&status=adoptable&distance=25&limit=100`),
+    // testing for location:
+    // url=`https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}&location=${longitude}&location=${latitude}${sNeed}&status=adoptable&distance=25&limit=100`,
+    // >>>>>>> 090134fef59b4164ae344183ad76715fcc1a572e
+    // function apiCallForAnimals(type, zip, breed, sNeeds) {
+    //   console.log("sNeeds variable is: ", sNeeds);
+    //   console.log("GET ME SOME ANIMALS - API CALL MADE");
+    //   fetch(
+    //     // value=“&special_needs=true”
+    //     `https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}&special_needs=${sNeeds}&status=adoptable&distance=25&limit=100`,
+    // >>>>>>> main
 
     // `https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}&status=adoptable&distance=25&limit=100`,
     {
@@ -138,24 +120,15 @@ function apiCallForAnimals(type, zip, breed, sNeed, longitude, latitude) {
     .then((response) => response.json())
     .then((responseJson) => getMeSomeAnimals(responseJson))
     .catch((err) => console.log(err));
-    console.log(url)
+  console.log(url);
 }
-
-
-
-
-
-
-
-
-
 
 // ***************************************************************************************** //
 function initMap() {
-  var options ={
+  var options = {
     zoom: 17,
-    center: { lat: 40.650002, lng: 	-73.949997 }, // brooklyn coordinates @ 11229
-  }
+    center: { lat: 40.650002, lng: -73.949997 }, // brooklyn coordinates @ 11229
+  };
   const map = new google.maps.Map(document.getElementById("map"), options);
   const geocoder = new google.maps.Geocoder();
   document.getElementById("submit").addEventListener("click", () => {
@@ -171,102 +144,98 @@ function geocodeAddress(geocoder, resultsMap) {
       var marker = new google.maps.Marker({
         map: resultsMap,
         position: results[0].geometry.location,
-        icon:"https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+        icon: "icons/paw_icon_smaller.png",
+
+        // "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
       });
       // var marker = new google.maps.Marker;
       var infoWindow = new google.maps.InfoWindow({
-        content: '<h1>iSeePets</h1>'
+        content: "<h1>iSeePets</h1>",
       });
-      marker.addListener('click', function(){
-      infoWindow.open(map, marker);
+      marker.addListener("click", function () {
+        infoWindow.open(map, marker);
       });
     } else {
-      alert(
-        "Geocode was not successful for the following reason: " + status
-      );
+      alert("Geocode was not successful for the following reason: " + status);
     }
   });
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 // ***************************************************************************************** //
 var testArray = [];
 function getMeSomeAnimals(responseJson) {
   console.log(responseJson);
 
-// PAC added 01/03/2020, Sunday
-if (!responseJson.animals){  // if we don't get a response, there was an error with the query
-    throwError("THERE IS AN ERROR WITH THIS SEARCH, PLEASE SELECT ALTERNATIVE SELECTION");
+  // PAC added 01/03/2020, Sunday
+  if (!responseJson.animals) {
+    // if we don't get a response, there was an error with the query
+    throwError(
+      "THERE IS AN ERROR WITH THIS SEARCH, PLEASE SELECT ALTERNATIVE SELECTION"
+    );
     return;
-}
-if (responseJson.animals.length == 0){ // if there are no results for our search - array returns nothing, shows a "0"
-    throwError("THERE ARE NO ANIMALS FOUND WITH YOUR SEARCH DETAILS,  PLEASE TRY ALTERNATIVE SELECTIONS");
+  }
+  if (responseJson.animals.length == 0) {
+    // if there are no results for our search - array returns nothing, shows a "0"
+    throwError(
+      "THERE ARE NO ANIMALS FOUND WITH YOUR SEARCH DETAILS,  PLEASE TRY ALTERNATIVE SELECTIONS"
+    );
     return;
-}
+  }
 
-            $("#results").html("");
-            // show the searched animals - to populate in selection.html page    
-            // PAC added 01/04/2020, Monday to this for loop the zip code and button & click handler to automatically update on google maps        
-            for (let i = 0; i < responseJson.animals.length; i++) {
-              testArray[i]=i;
-              $("#results").append(`<div class='icard'> 
-              <img class='resultImg' src="${responseJson.animals[i].photos[0].medium}" alt="animals" class="petImg">
+  $("#results").html("");
+
+  // show the searched animals - to populate in selection.html page
+  // PAC added 01/04/2020, Monday to this for loop the zip code and button & click handler to automatically update on google maps
+  for (let i = 0; i < responseJson.animals.length; i++) {
+    testArray[i] = i;
+    $("#results").append(`<div class='icard'> 
+              <img class='resultImg' src="${
+                responseJson.animals[i].photos[0].medium
+              }" alt="animals" class="petImg">
                 <h3>${responseJson.animals[i].name}</h3>
                 <p>${responseJson.animals[i].breeds.primary}<p>
-                <p>${responseJson.animals[i].age} ${responseJson.animals[i].gender}<p>
-                <a href="${responseJson.animals[i].url}" class="animalLink" target="_blank">See me on Petfinder!</a>
-                <p>See me on the map at zip code: ${responseJson.animals[i].contact.address.postcode}<p>
-                <option id='seeMeOnMap${[i]}' value="${responseJson.animals[i].contact.address.postcode}">"CLICK HERE" to Map Me</option>
+                <p>${responseJson.animals[i].age} ${
+      responseJson.animals[i].gender
+    }<p>
+                <a href="${
+                  responseJson.animals[i].url
+                }" class="animalLink" target="_blank">See me on Petfinder!</a>
+                <p>See me on the map at zip code: ${
+                  responseJson.animals[i].contact.address.postcode
+                }<p>
+                <option id='seeMeOnMap${[i]}' value="${
+      responseJson.animals[i].contact.address.postcode
+    }">"CLICK HERE" to Map Me</option>
                 </div>`);
-            }
-            // PAC added 01/04/2020, Sunday
-            // need to use the option selector to avoid conflict with the zoom +/- google map buttons
-            // note: only the input, button, meter, li, option, progress & param elements support the value attribute - I used option tag
-            $("option").click(function (){ 
-              console.log("zip code of this pet is: ", this.value);
-              document.getElementById("address").value = this.value;  // dynamically sets the input value of the dynamically created card !!!
-              // geocodeAddress(geocoder, map);
+  }
+  // PAC added 01/04/2020, Sunday
+  // need to use the option selector to avoid conflict with the zoom +/- google map buttons
+  // note: only the input, button, meter, li, option, progress & param elements support the value attribute - I used option tag
+  $("option").click(function () {
+    console.log("zip code of this pet is: ", this.value);
+    document.getElementById("address").value = this.value; // dynamically sets the input value of the dynamically created card !!!
+    // geocodeAddress(geocoder, map);
 
-              // put zip in value
-              // call geocode or something in init func??
-              // geocodeAddress(geocoder, map);
-              $("#submit").click();
-            })
-            console.log('test array', testArray);   
+    // put zip in value
+    // call geocode or something in init func??
+    // geocodeAddress(geocoder, map);
+    $("#submit").click();
+  });
+  console.log("test array", testArray);
 }
-
 
 // PAC added 01/03/2020, Sunday
-function throwError(errorMsg){
-    $("#results").html("");
-    $("#results").append(`${errorMsg}`);
-    console.log("ERROR WITH YOUR SEARCH: ", errorMsg);
+function throwError(errorMsg) {
+  $("#results").html("");
+  $("#results").append(`${errorMsg}`);
+  console.log("ERROR WITH YOUR SEARCH: ", errorMsg);
 }
-
-
-
-
-
-
-
-
 
 // ***************************************************************************************** //
 function searchPets() {
   console.log("API search Request Made - NOW go get me some ANIMALS !!!");
   $("form").submit((event) => {
-    // alert("Submitted - from searchPets() function"); 
+    // alert("Submitted - from searchPets() function");
     event.preventDefault(); // do not submit to server, input used for building API call
     console.log(
       "******** FORM SUBMITTED - HERE ARE YOUR SELETIONS TO BUILD API QUERY *********"
@@ -276,14 +245,16 @@ function searchPets() {
     var latitude = 0;
     var type = petType;
     var zip = $("#zip").val();
-    var breed
-    var sNeed=''
-    if ($('.specialNeeds').is(":checked"))
-    {
-      sNeed = "&special_needs=true"
+    var breed;
+    var sNeed = "";
+    if ($(".specialNeeds").is(":checked")) {
+      sNeed = "&special_needs=true";
     }
-    if ($("#dogbreed").val() !== null){
-     breed = "&breed="+$("#dogbreed").val();}else{breed=''}
+    if ($("#dogbreed").val() !== null) {
+      breed = "&breed=" + $("#dogbreed").val();
+    } else {
+      breed = "";
+    }
     console.log("you are looking for a: ", type);
     console.log("the breed you selected is: ", breed);
     console.log("your zip code is: ", zip);
@@ -294,7 +265,7 @@ function searchPets() {
 function searchPetsCat() {
   console.log("API search Request Made - NOW go get me some ANIMALS !!!");
   $("form").submit((event) => {
-    // alert("Submitted - from seachPetsCat() function"); 
+    // alert("Submitted - from seachPetsCat() function");
     event.preventDefault(); // do not submit to server, input used for building API call
     console.log(
       "******** FORM SUBMITTED - HERE ARE YOUR SELETIONS TO BUILD API QUERY *********"
@@ -302,14 +273,16 @@ function searchPetsCat() {
     // var animalType = $(".tablinks").val();
     var type = petType;
     var zip = $("#catzip").val();
-    var breed
-    var sNeed=''
-    if ($('.specialNeeds').is(":checked"))
-    {
-      sNeed = "&special_needs=true"
+    var breed;
+    var sNeed = "";
+    if ($(".specialNeeds").is(":checked")) {
+      sNeed = "&special_needs=true";
     }
-    if ($("#catbreed").val() !== null){
-     breed = "&breed="+$("#catbreed").val();}else{breed=''}
+    if ($("#catbreed").val() !== null) {
+      breed = "&breed=" + $("#catbreed").val();
+    } else {
+      breed = "";
+    }
     console.log("you are looking for a: ", type);
     console.log("the breed you selected is: ", breed);
     console.log("your zip code is: ", zip);

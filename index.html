@@ -8,16 +8,13 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/mystyles.css" />
   </head>
-
-
-
   <body>
     <nav id="navbar" class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" >
           <h1 class="title">
             iSeePets<p class="subtitle">
-            Find your<strong>Perfect Pets</strong>!
+            Find your <strong>Special Pets</strong>!
           </p>
           </h1>
           <br>
@@ -91,70 +88,35 @@
       <h3 class="category">Dogs</h3>
       <form action="/action_page.php">
 
-        <!-- REMOVED - MAYBE PUT BACK AFTER ENHANCING API CALL  -->        
-        <!-- <label for="dgage">Age:</label>
-        <select name="dgage" id="dgage">
-          <option value="puppy">puppy</option>
-          <option value="young">young</option>
-          <option value="adult">adult</option>
-          <option value="senior">senior</option>
-        </select> -->
-
-        <!-- added for pet type - need this in the form  -->
-
-        <!-- <label for="petType">Type of Pet, Dog or Cat:</label>
-        <select name="dogsCatsOther" id="petType" class="form-control">
-          <option value="dog">dog</option>
-          <option value="cat">cat</option>
-          <option value="other">other</option>
-        </select>-->
-
-
-
-
-
-        <label for="dogbreed">breed:</label>
+        
+        <label for="dogbreed">Breed:</label>
         <!-- added in 20 breed options, we can add more  -->
         <select name="dogbreed" id="dogbreed" class="form-control">
-          <!-- <option value="&special_needs=true">SPECAL NEEDS PETS</option> -->
           <option value="&special_needs=true"></option>
-          <option value="shih tzu">shih tzu</option>
-            <option value="labrador retriever">labrador retriever</option>
-            <option value="golden retriever">golden retriever</option>
-            <option value="beagle">beagle</option>
-            <option value="terrier">terrier</option>
-            <option value="husky">husky</option>
-            <option value="rottweiler">rottweiler</option>
-            <option value="cocker spaniel">cocker spaniel</option>
-            <option value="mastiff">mastiff</option>
-            <option value="great dane">great dane</option>
-            <option value="schnauzer">schnauzer</option>
-            <option value="pug">pug</option>
-            <option value="collie">collie</option>
-            <option value="chow chow">chow chow</option>
-            <option value="bull terrier">bull terrier</option>
-            <option value="jack russell terrier">jack russell terrier</option>
-            <option value="dalmatian">dalmatian</option>
-            <option value="bichon frise">bichon frise</option>
-            <option value="great pyrenees">great pyrenees</option>
-            <option value="bloodhound">bloodhound</option>        
+          <option value="Beagle">Beagle</option>
+          <option value="Bichon Frise">Bichon Frise</option>
+          <option value="Bloodhound">Bloodhound</option>        
+          <option value="Bull Terrier">Bull Terrier</option>
+          <option value="Chow Chow">Chow Chow</option>
+          <option value="Cocker Spaniel">Cocker Spaniel</option>
+          <option value="Collie">Collie</option>
+          <option value="Dalmatian">Dalmatian</option>
+          <option value="Golden Retriever">Golden Retriever</option>
+          <option value="Great Dane">Great Dane</option>
+          <option value="Great Pyrenees">Great Pyrenees</option>
+          <option value="Husky">Husky</option>
+          <option value="Jack Russell Terrier">Jack Russell Terrier</option>
+          <option value="Labrador Retriever">Labrador Retriever</option>
+          <option value="Mastiff">Mastiff</option>
+          <option value="Pug">Pug</option>
+          <option value="Rottweiler">Rottweiler</option>
+          <option value="Schnauzer">Schnauzer</option>
+          <option value="Shih Tzu">Shih Tzu</option>
+          <option value="Terrier">Terrier</option>
+          <!-- <option value="&special_needs=true">SPECAL NEEDS PETS</option> -->
         </select>
 
-           <!-- REMOVED - MAYBE PUT BACK AFTER ENHANCING API CALL  -->
-        <!-- <label for="size">Size:</label>
-        <select name="size" id="size">
-          <option value="small">small</option>
-          <option value="medium">medium</option>
-          <option value="large">large</option>
-          <option value="xlarge">x-large</option>
-        </select> -->
-
-        <!-- REMOVED - MAYBE PUT BACK AFTER ENHANCING API CALL  -->
-        <!-- <label for="gender">gender:</label>
-        <select name="gender" id="gender">
-          <option value="Male">male</option>
-          <option value="Female">female</option>
-        </select> -->
+      
 
         <!-- added zip for animal location to find on google map  -->
         <label for="zip">Search by Zip Code:</label>
@@ -165,27 +127,17 @@
         <input type="checkbox" name="special" class="specialNeeds">
         <label for="special">Special needs pets only</label><br>
 
-<!--         <input type="checkbox" id="s_Needs" name="sNeeds" value = 'true'>
-        <label for="specialNeeds"> Click for Special Needs</label><br><br> -->
 
-
-
-
-
-
-
-
-        <!-- <input class="subBtn" type="button" value="Submit" onclick="searchPets()"> -->
-        <!-- <input class="subBtn" type="button" value="Search" onclick="searchPets()">  -->
         <input class="subBtn" type="submit" value="Search" onclick="searchPets()">
       </form>
-    </div><!-- Cats  -->
+    </div>
+    <!-- Cats  -->
     <div id="cats" class="tabcontent">
       <h3 class="category">Cats</h3>
       <form action="/action_page.php">
         
-        <label for="catbreed">breed:</label>        
-        <!-- added in 47 breed options, we can add more  -->
+        <label for="catbreed">Breed:</label>        
+        <!-- added in 50 breed options, we can add more  -->
         <select name="catbreed" id="catbreed" class="form-control">
             <option></option>
             <option value="Abyssinian">Abyssinian</option>
@@ -280,14 +232,7 @@
     </div>
 
 
-  <!-- removed iFrame - was producing the following error: "Google Maps Platform rejected your request. The provided API key is invalid."  -->
-  <!-- <iframe
-  width="600"
-  height="450"
-  frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/place?key=API_KEY
-    &q=Space+Needle,Seattle+WA" allowfullscreen>
-  </iframe>     -->
+  
     
 </div>
 <!-- searched for animals to appear here  -->
@@ -305,11 +250,7 @@
 
 
 
-<!-- adding in google map -->
-<!-- <script defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9V0psbmE8&callback=initMap">
-</script> -->
-<!-- internal CSS style for our map -->
+
 <style>
     #map{
         height: 1000px;
@@ -327,79 +268,19 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9
 <hr>
 <br><br>
 <hr>
-
-<!-- put in backend.js code  -->
-<!-- <script>
-  function initMap() {
-    var options ={
-      zoom: 17,
-      center: { lat: 40.650002, lng: 	-73.949997 }, // brooklyn coordinates @ 11229
-    }
-    const map = new google.maps.Map(document.getElementById("map"), options);
-    const geocoder = new google.maps.Geocoder();
-    document.getElementById("submit").addEventListener("click", () => {
-      geocodeAddress(geocoder, map);
-    });
-  }
-
-  function geocodeAddress(geocoder, resultsMap) {
-    const address = document.getElementById("address").value;
-    geocoder.geocode({ address: address }, (results, status) => {
-      if (status === "OK") {
-        resultsMap.setCenter(results[0].geometry.location);
-        new google.maps.Marker({
-          map: resultsMap,
-          position: results[0].geometry.location,
-        });
-      } else {
-        alert(
-          "Geocode was not successful for the following reason: " + status
-        );
-      }
-    });
-  }
-</script> -->
 <!-- google api key script tag -->
+
 <script defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9V0psbmE8&callback=initMap">
 </script>
 
 
 
-<!-- repositioned script tags before body tag for valid html & updated jQuery from 3.2.1 to 3.4.1 -->
-<!-- https://stackoverflow.com/questions/3037725/is-it-wrong-to-place-the-script-tag-after-the-body-tag --> 
-<!-- jQuery regular version - slim version above does not support Ajax     -->
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --> 
 <script src="./backend.js"></script>
 
-<!-- <script src="./frontend.js"></script>--> 
-
-
-<!-- <script>
-var sNeeds;
-$(document).ready(function(){
-        $(‘input[type=“checkbox”]’).click(function(){
-            if($(this).prop(“checked”) == true){
-               sNeeds = “&special_needs=true”;
-            }
-            else if($(this).prop(“checked”) == false){
-                $(“#result”).html(“Checkbox is unchecked.“);
-              sNeeds = “”
-            }
-        });
-    });
-</script> -->
-<footer class="footer">
-  <div class="content has-text-centered">
-  <p>
-  <strong>Made With Love</strong> 
- 
-  </p>
-    </div>
-  </footer>
-
-
-</body>  
-</html>
-<!-- End of Document -->
+// </body>  
+// </html>
+// <!-- End of Document -->
