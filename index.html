@@ -116,7 +116,8 @@
         <label for="dogbreed">breed:</label>
         <!-- added in 20 breed options, we can add more  -->
         <select name="dogbreed" id="dogbreed" class="form-control">
-          <option value="&special_needs=true">SPECAL NEEDS PETS</option>
+          <!-- <option value="&special_needs=true">SPECAL NEEDS PETS</option> -->
+          <option value="&special_needs=true"></option>
           <option value="shih tzu">shih tzu</option>
             <option value="labrador retriever">labrador retriever</option>
             <option value="golden retriever">golden retriever</option>
@@ -271,6 +272,7 @@
         </select>
         <br><br>
         <input type="checkbox" name="special" class="specialNeeds">
+        <!--  -->
         <label for="special">Special needs pets only</label><br>
         <!-- <input class="subBtn" type="button" value="Submit" onclick="searchPets()"> -->
         <input class="subBtn" type="button" value="Search" onclick="searchPets()">
@@ -304,47 +306,36 @@
 
 
 <!-- adding in google map -->
-<script defer
+<!-- <script defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9V0psbmE8&callback=initMap">
-</script>
+</script> -->
 <!-- internal CSS style for our map -->
 <style>
     #map{
-        height: 400px;
+        height: 1000px;
         width: 100%
     }
 </style>
 <hr>
 <h1>Adding a google map</h1>
-<div id="floating-panel">
-  <input id="address" type="textbox" value="Brooklyn, NY" />
-  <input id="submit" type="button" value="Geocode" />
-</div>
-<div id="map">Here is the google map</div>
-<!-- <script>
-  // Initialize and add the map       
-  function initMap(){
-      const uluru = {lat: -25.344, lng: 131.036};
-      // The map, centered at Uluru
-      const map = new google.maps.Map(document.getElementById("map"),
-      {
-          zoom: 4,
-          center: uluru,
-      });
-      // The marker, positioned at Ulura
-      const marker = new google.maps.Marker({
-          position: uluru,
-          map: map,
-      });
-  }
-</script> -->
+<!-- <div id="floating-panel" > -->  
+<input id="address" type="textbox" value="Brooklyn, NY" />
+<input id="submit" type="button" value="Geocode" class="trick" />
+<div id="map">
 
-<script>
+</div>
+<hr>
+<br><br>
+<hr>
+
+<!-- put in backend.js code  -->
+<!-- <script>
   function initMap() {
-    const map = new google.maps.Map(document.getElementById("map"), {
+    var options ={
       zoom: 17,
-      center: { lat: 40.650002, lng: 	-73.949997 },
-    });
+      center: { lat: 40.650002, lng: 	-73.949997 }, // brooklyn coordinates @ 11229
+    }
+    const map = new google.maps.Map(document.getElementById("map"), options);
     const geocoder = new google.maps.Geocoder();
     document.getElementById("submit").addEventListener("click", () => {
       geocodeAddress(geocoder, map);
@@ -367,6 +358,10 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9
       }
     });
   }
+</script> -->
+<!-- google api key script tag -->
+<script defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9V0psbmE8&callback=initMap">
 </script>
 
 

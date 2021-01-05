@@ -1,7 +1,11 @@
 // ****************************************************************************** //
 // from petfinder.com/user/developer-settings  -  API key & Secrete
-var key = "i4WSkGk27C4yI7wCconCIHNXNrZh2dLsepStJSgNB7p9137P05";
-var secret = "Dav2xXd8H9Y7PTvQvBymZPdYAP3KYXYTLWMu5Eca";
+// var key = "i4WSkGk27C4yI7wCconCIHNXNrZh2dLsepStJSgNB7p9137P05"; // PAC api key
+// var secret = "Dav2xXd8H9Y7PTvQvBymZPdYAP3KYXYTLWMu5Eca"; // PAC api secrete
+// var secret = "rNmNp9X9CQ3wh3pXf7NWNYIhzac9Ox5phsc3HjTe";  // PAC reset secrete on 01/04/2020 when rate limit was exceeded
+
+var key = "jp5bUg2jBnsMZ3vlbulEsgxB5QTb5nffFfAVIxolBrX43YClaE"; // Natalia's key
+var secret = "PFmuqQcXF4uihggaxI4IKdsNTGUUl9386ozcfvRZ";
 
 // from https://www.petfinder.com/developers/v2/docs/
 // from documentation : use deconstructed curl to browser fetch to get a new token for each API request
@@ -32,6 +36,7 @@ function changetabs(evt, tabname) {
   console.log(petType);
 }
 
+// ***************************************************************************************** //
 var token = "";
 
 function getNewToken() {
@@ -58,9 +63,8 @@ function getNewToken() {
     });
 }
 getNewToken();
-// ****************************************************************************** //
 
-// ****************************************************************************** //
+// ***************************************************************************************** //
 // retrieves access token & makes API call to get animals
 var sNeeds;
 // $(document).ready(function(){
@@ -80,7 +84,6 @@ function apiCallForAnimals(type, zip, breed, sNeed, longitude, latitude) {
   console.log("GET ME SOME ANIMALS - API CALL MADE");
   fetch(
     (url = `https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}${sNeed}&status=adoptable&distance=25&limit=100`),
-
     // testing for location:
     // url=`https://api.petfinder.com/v2/animals?type=${type}${breed}&location=${zip}&location=${longitude}&location=${latitude}${sNeed}&status=adoptable&distance=25&limit=100`,
     // >>>>>>> 090134fef59b4164ae344183ad76715fcc1a572e
@@ -119,6 +122,45 @@ function apiCallForAnimals(type, zip, breed, sNeed, longitude, latitude) {
   console.log(url);
 }
 
+// ***************************************************************************************** //
+function initMap() {
+  var options = {
+    zoom: 17,
+    center: { lat: 40.650002, lng: -73.949997 }, // brooklyn coordinates @ 11229
+  };
+  const map = new google.maps.Map(document.getElementById("map"), options);
+  const geocoder = new google.maps.Geocoder();
+  document.getElementById("submit").addEventListener("click", () => {
+    geocodeAddress(geocoder, map);
+  });
+}
+
+function geocodeAddress(geocoder, resultsMap) {
+  const address = document.getElementById("address").value;
+  geocoder.geocode({ address: address }, (results, status) => {
+    if (status === "OK") {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location,
+        icon:
+          "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+      });
+      // var marker = new google.maps.Marker;
+      var infoWindow = new google.maps.InfoWindow({
+        content: "<h1>iSeePets</h1>",
+      });
+      marker.addListener("click", function () {
+        infoWindow.open(map, marker);
+      });
+    } else {
+      alert("Geocode was not successful for the following reason: " + status);
+    }
+  });
+}
+
+// ***************************************************************************************** //
+var testArray = [];
 function getMeSomeAnimals(responseJson) {
   console.log(responseJson);
 
@@ -140,15 +182,43 @@ function getMeSomeAnimals(responseJson) {
 
   $("#results").html("");
   // show the searched animals - to populate in selection.html page
+  // PAC added 01/04/2020, Monday to this for loop the zip code and button & click handler to automatically update on google maps
   for (let i = 0; i < responseJson.animals.length; i++) {
+    testArray[i] = i;
     $("#results").append(`<div class='icard'> 
-    <img class='resultImg' src="${responseJson.animals[i].photos[0].medium}" alt="animals" class="petImg">
-     <h3>${responseJson.animals[i].name}</h3>
-     <p>${responseJson.animals[i].breeds.primary}<p>
-     <p>${responseJson.animals[i].age} ${responseJson.animals[i].gender}<p>
-     <a href="${responseJson.animals[i].url}" class="animalLink" target="_blank">See me on Petfinder!</a>
-     </div>`);
+              <img class='resultImg' src="${
+                responseJson.animals[i].photos[0].medium
+              }" alt="animals" class="petImg">
+                <h3>${responseJson.animals[i].name}</h3>
+                <p>${responseJson.animals[i].breeds.primary}<p>
+                <p>${responseJson.animals[i].age} ${
+      responseJson.animals[i].gender
+    }<p>
+                <a href="${
+                  responseJson.animals[i].url
+                }" class="animalLink" target="_blank">See me on Petfinder!</a>
+                <p>See me on the map at zip code: ${
+                  responseJson.animals[i].contact.address.postcode
+                }<p>
+                <option id='seeMeOnMap${[i]}' value="${
+      responseJson.animals[i].contact.address.postcode
+    }">"CLICK HERE" to Map Me</option>
+                </div>`);
   }
+  // PAC added 01/04/2020, Sunday
+  // need to use the option selector to avoid conflict with the zoom +/- google map buttons
+  // note: only the input, button, meter, li, option, progress & param elements support the value attribute - I used option tag
+  $("option").click(function () {
+    console.log("zip code of this pet is: ", this.value);
+    document.getElementById("address").value = this.value; // dynamically sets the input value of the dynamically created card !!!
+    // geocodeAddress(geocoder, map);
+
+    // put zip in value
+    // call geocode or something in init func??
+    // geocodeAddress(geocoder, map);
+    $("#submit").click();
+  });
+  console.log("test array", testArray);
 }
 
 // PAC added 01/03/2020, Sunday
@@ -158,8 +228,7 @@ function throwError(errorMsg) {
   console.log("ERROR WITH YOUR SEARCH: ", errorMsg);
 }
 
-// ****************************************************************************** //
-
+// ***************************************************************************************** //
 function searchPets() {
   console.log("API search Request Made - NOW go get me some ANIMALS !!!");
   $("form").submit((event) => {
