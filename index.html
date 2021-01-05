@@ -1,4 +1,4 @@
-
+<!-- Start of Document -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -84,6 +84,7 @@
       <!-- added value attribute to get value() for building specific animal type API request -->
       <button class="tablinks" onclick="changetabs(event, 'cats')" value="cat">Cats</button>   
       <!-- added value attribute to get value() for building specific animal type API request -->
+      <button class="tablinks" onclick="changetabs(event, 'other')" value="other">Other</button>
     </div>
     <!-- DOGS  -->
     <div id="dogs" class="tabcontent">
@@ -115,7 +116,9 @@
         <label for="dogbreed">breed:</label>
         <!-- added in 20 breed options, we can add more  -->
         <select name="dogbreed" id="dogbreed" class="form-control">
-          <option value="&special_needs=true">SPECAL NEEDS PETS</option>
+          <!-- <option value="&special_needs=true">SPECAL NEEDS PETS</option> -->
+          <option value="&special_needs=true">SPECIAL NEEDS PETS</option>
+          <option></option>
           <option value="shih tzu">shih tzu</option>
             <option value="labrador retriever">labrador retriever</option>
             <option value="golden retriever">golden retriever</option>
@@ -177,7 +180,11 @@
         <!-- <input class="subBtn" type="button" value="Search" onclick="searchPets()">  -->
         <input class="subBtn" type="submit" value="Search" onclick="searchPets()">
       </form>
-    </div><!-- Cats  -->
+
+    </div>
+    
+    
+    <!-- Cats  -->
     <div id="cats" class="tabcontent">
       <h3 class="category">Cats</h3>
       <form action="/action_page.php">
@@ -185,6 +192,7 @@
         <label for="catbreed">breed:</label>        
         <!-- added in 47 breed options, we can add more  -->
         <select name="catbreed" id="catbreed" class="form-control">
+          <option value="&special_needs=true">SPECAL NEEDS PETS</option>
             <option></option>
             <option value="Abyssinian">Abyssinian</option>
             <option value="American Bobtail">American Bobtail</option>
@@ -251,6 +259,32 @@
     </div>
     <!-- Ohter Animals  -->
     
+    <div id="other" class="tabcontent">
+      <h3 class="category">other</h3>
+      <form action="/action_page.php">
+        
+        <label for="othertype">Type:</label>        
+        <!-- added in 47 breed options, we can add more  -->
+        <select name="othertype" id="othertype" class="form-control">
+          <option value="&special_needs=true">SPECAL NEEDS PETS</option>
+          <option></option>
+          <option value="rabbit">Rabbit</option>
+            <option value="small&furry">small&furry</option>
+            <option value="horses">horses</option>
+            <option value="birds">birds</option>
+            <option value="scales,fins&other">scales,fins&other</option>
+        </select>
+      </select>
+      <label for="zip">Search by Zip Code:</label>
+      <input type="text" id="otherzip" class="form-control" required />
+      <br><br>
+      <input type="checkbox" name="special" class="specialNeeds">
+      <label for="special">Special needs pets only</label><br>
+      <!-- <input class="subBtn" type="button" value="Submit" onclick="searchPets()"> -->
+      <input class="subBtn" type="submit" value="Search" onclick="searchPetsOther()">
+    </form>
+  </div>
+
 
 
   <!-- removed iFrame - was producing the following error: "Google Maps Platform rejected your request. The provided API key is invalid."  -->
@@ -279,47 +313,36 @@
 
 
 <!-- adding in google map -->
-<script defer
+<!-- <script defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9V0psbmE8&callback=initMap">
-</script>
+</script> -->
 <!-- internal CSS style for our map -->
 <style>
     #map{
-        height: 400px;
+        height: 1000px;
         width: 100%
     }
 </style>
 <hr>
 <h1>Adding a google map</h1>
-<div id="floating-panel">
-  <input id="address" type="textbox" value="Brooklyn, NY" />
-  <input id="submit" type="button" value="Geocode" />
-</div>
-<div id="map">Here is the google map</div>
-<!-- <script>
-  // Initialize and add the map       
-  function initMap(){
-      const uluru = {lat: -25.344, lng: 131.036};
-      // The map, centered at Uluru
-      const map = new google.maps.Map(document.getElementById("map"),
-      {
-          zoom: 4,
-          center: uluru,
-      });
-      // The marker, positioned at Ulura
-      const marker = new google.maps.Marker({
-          position: uluru,
-          map: map,
-      });
-  }
-</script> -->
+<!-- <div id="floating-panel" > -->  
+<input id="address" type="textbox" value="Brooklyn, NY" />
+<input id="submit" type="button" value="Geocode" class="trick" />
+<div id="map">
 
-<script>
+</div>
+<hr>
+<br><br>
+<hr>
+
+<!-- put in backend.js code  -->
+<!-- <script>
   function initMap() {
-    const map = new google.maps.Map(document.getElementById("map"), {
+    var options ={
       zoom: 17,
-      center: { lat: 40.650002, lng: 	-73.949997 },
-    });
+      center: { lat: 40.650002, lng: 	-73.949997 }, // brooklyn coordinates @ 11229
+    }
+    const map = new google.maps.Map(document.getElementById("map"), options);
     const geocoder = new google.maps.Geocoder();
     document.getElementById("submit").addEventListener("click", () => {
       geocodeAddress(geocoder, map);
@@ -342,6 +365,10 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9
       }
     });
   }
+</script> -->
+<!-- google api key script tag -->
+<script defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeydvT2KATQXldXHRWll-W2Q9V0psbmE8&callback=initMap">
 </script>
 
 
