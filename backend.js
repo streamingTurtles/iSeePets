@@ -8,7 +8,7 @@
 // var secret = "PFmuqQcXF4uihggaxI4IKdsNTGUUl9386ozcfvRZ";
 
 var key = "eUODi9ZTKGQMm97fbBV5r33j7Vavb3ICI8w9bmlnFC5LG6mSA8"; // New Key 1/5/20
-var secret = "gPiPsgH2XOFYjoMiYsFdN8UbwVRwiC3l415pLJtt";
+var secret = "gPiPsgH2XOFYjoMiYsFdN8UbwVRwiC3l415pLJtt";  
 
 // from https://www.petfinder.com/developers/v2/docs/
 // from documentation : use deconstructed curl to browser fetch to get a new token for each API request
