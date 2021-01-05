@@ -312,5 +312,143 @@ function searchPetsCat() {
 }
 
 
+// ***************************************************************************************** //
+// Local Storage Section, added PAC 01/05/2020, Tuesday
+
+// var form = document.querySelector('form');
+// console.log("FAVORITE is: document.querySelector('form');", form);
+// var ul = document.querySelector('ul');
+// var button = document.querySelector('button');
+// var input = document.getElementById('dogbreed');
+// console.log("FAVORITE input: document.getElementById('dogbreed');", input);
+
+
+
+// // 1. create array for Breed Favorits to be stored if there is something in localStorage
+// // this is checked 1st as we are saving data, and when page is refreshed, we want to render the stored data - that which would have been saved into localStorage via setItem()
+// var scoresArray;
+// console.log("FAVORITE BREED ARRAY:", scoresArray);
+// if (localStorage.getItem('items')) {
+//   scoresArray = JSON.parse(localStorage.getItem('items'))
+//   console.log("FAVORITE Array in IF condition is: ", scoresArray);
+// } else {
+//   scoresArray = []  // if nothing is in the localStorage, just at least create the array object
+//   console.log("scoresArray in else is: ", scoresArray);
+// }
+
+// // 2. add items to localStorage found in 'items' 
+// localStorage.setItem('items', JSON.stringify(scoresArray));
+// // use JSON stringify to getItem to render into <li> tags - need to JSON.parse() back into object syntax
+// var data = JSON.parse(localStorage.getItem('items'));
+// // create the li tags to show our input 
+// var createLiTags = function(text){
+//   if(text){
+//   var li = document.createElement('li');
+//   li.textContent = text;
+//   ul.appendChild(li);
+//   }
+// }
+
+// // prevent from sending to a server - stop the default element behavior
+// form.addEventListener('submit', function (e) {
+//   e.preventDefault();
+//   // set our local storage
+//   scoresArray.push(input.value + " scored: " + getData[getDataTRACK] + " out of the 3 questions"); // *** added for reGRade on 12/15/2020 *** 
+//   localStorage.setItem('items', JSON.stringify(scoresArray));
+//   // *** repositioned into new function above for reGRade on 12/15/2020 ***
+//   // createLiTags(input.value + " scored: " + getData[getDataTRACK] + " out of the 3 questions");    // *** added for reGRade on 12/15/2020 *** 
+//   input.value = "";
+// });
+
+// // loops through all current storage, and displays it in browser in li tags via creaeLiTags function
+// data.forEach(dogbreed => {
+//   createLiTags(dogbreed);
+// });
+// ***************************************************************************************** //
+
+
+// DOG LOCAL STORAGE 
+// ***************************************************************************************** //
+const dogform = document.querySelector('form#doggies');
+const ul_forDog = document.querySelector('ul#doggiesUL');
+const clearButton = document.getElementById('dogsClearLS');
+const input_dogInfo = document.getElementById('dogFav');
+let dogFavArray = localStorage.getItem('theDogs') ? JSON.parse(localStorage.getItem('theDogs')) : [];
+console.log("DOG FAVORITS: ", dogFavArray);
+
+localStorage.setItem('theDogs', JSON.stringify(dogFavArray));
+const Dogdata = JSON.parse(localStorage.getItem('theDogs'));
+
+const dogLiMaker = (text) => {
+  const li_forDog = document.createElement('li');
+  li_forDog.textContent = text;
+  ul_forDog.appendChild(li_forDog);
+}
+
+dogform.addEventListener('submit', function (e) {
+  e.preventDefault();  // don't submit to server
+
+  dogFavArray.push(input_dogInfo.value);
+  localStorage.setItem('theDogs', JSON.stringify(dogFavArray));
+  dogLiMaker(input_dogInfo.value);
+  input_dogInfo.value = "";
+});
+
+Dogdata.forEach(dogFav => {
+  dogLiMaker(dogFav);
+});
+
+clearButton.addEventListener('click', function () {
+  localStorage.clear();
+  while (ul_forDog.firstChild) {
+    ul_forDog.removeChild(ul_forDog.firstChild);
+  }
+  dogFavArray = [];
+});
+
+
+
+
+// CAT LOCAL STORAGE 
+// ***************************************************************************************** //
+const catform = document.querySelector('form#kitties');
+const ul_forCat = document.querySelector('ul#kittiesUL');
+const clearButtonForCat = document.getElementById('catsClearLS');
+const input_catInfo = document.getElementById('catFav');
+let catFavArray = localStorage.getItem('theCats') ? JSON.parse(localStorage.getItem('theCats')) : [];
+console.log("CAT FAVORITS: ", catFavArray);
+
+localStorage.setItem('theCats', JSON.stringify(catFavArray));
+const Catdata = JSON.parse(localStorage.getItem('theCats'));
+
+const CatLiMaker = (text) => {
+  const li_forCat = document.createElement('li');
+  li_forCat.textContent = text;
+  ul_forCat.appendChild(li_forCat);
+}
+
+catform.addEventListener('submit', function (e) {
+  e.preventDefault();  // don't submit to server
+
+  catFavArray.push(input_catInfo.value);
+  localStorage.setItem('theCats', JSON.stringify(catFavArray));
+  CatLiMaker(input_catInfo.value);
+  input_catInfo.value = "";
+});
+
+Catdata.forEach(catFav => {
+  CatLiMaker(catFav);
+});
+
+clearButtonForCat.addEventListener('click', function () {
+  localStorage.clear();
+  while (ul_forCat.firstChild) {
+    ul_forCat.removeChild(ul_forCat.firstChild);
+  }
+  catFavArray = [];
+});
+
+
+
 
 
