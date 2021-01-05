@@ -193,13 +193,6 @@ function geocodeAddress(geocoder, resultsMap) {
 
 
 
-
-
-
-
-
-
-
 // ***************************************************************************************** //
 var testArray = [];
 function getMeSomeAnimals(responseJson) {
@@ -317,3 +310,7 @@ function searchPetsCat() {
     apiCallForAnimals(type, zip, breed, sNeed);
   });
 }
+
+
+
+
