@@ -1,8 +1,8 @@
 # iSeePets
 
-Alowing pet lovers to find a pet companion So that all animals including special needs pets find a loving home. 
+Allowing pet lovers to find a pet companion so that all animals including special needs pets find a loving home. 
 
-Live webpage link - https://streamingturtles.github.io/iSeePets/contact.html
+Live webpage link - https://streamingturtles.github.io/iSeePets/index.html
 
 Powerpoint Link - https://docs.google.com/presentation/d/1cIDAzuEx98lOg35r4sYMLvGWgtH04GvBNXWHOflTA1s/edit?usp=sharing
 
@@ -97,17 +97,13 @@ Project is: _in progress_ other features can be added to make website more dynam
 
 ## Sources
 
-steamingTurtles - We helped eachother slove issues by debugging, sharing outside resources and working through code step by step. 
+steamingTurtles - We helped eachother solve issues by debugging, sharing outside resources and working through code step by step. 
 
-w3schools
-
-- https://www.w3schools.com/tags/tag_a.asp
-- https://www.w3schools.com/howto/howto_js_collapsible.asp
-- https://blog.hubspot.com/marketing/jump-link-same-page
-- https://www.w3schools.com/howto/howto_css_fixed_footer.asp
-- https://www.w3schools.com/howto/howto_css_social_media_buttons.asp
-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_social_media_buttons2
-- https://www.w3schools.com/cssref/pr_background-image.asp
+- w3schools
+- API's documnetation
+- Font Awesome 
+- Google 
+- Stackover flow 
 
 ## Contact
 
