@@ -33,10 +33,10 @@ Using the Petfinder API, our current application design allows a user to find al
 
 ## Screenshots
 
-![Screen Shot 1](assets/iSeePets1.png)
-![Screen Shot 2](assets/iSeePets2.png)
-![Screen Shot 3](assets/iSeePets3.png)
-![Screen Shot 4](assets/iSeePets4.png)
+![Screen Shot 1](Assets/iSeePets1.png)
+![Screen Shot 2](Assets/iSeePets2.png)
+![Screen Shot 3](Assets/iSeePets3.png)
+![Screen Shot 4](Assets/iSeePets4.png)
 
 ## Technologies
 
